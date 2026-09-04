@@ -10,15 +10,15 @@ export default function Footer() {
           </a>{" "}
           and it'll go into the review queue. Prefer working in code — fixing a
           license, editing the schema, or improving the site itself? Fork the
-          repo and open a merge request on GitLab.
+          repo and open a merge request on GitHub.
         </p>
         <a
-          href="https://gitlab.com/iam-thedarkhawk/foss-lib"
+          href="https://github.com/iam-thedarkhawk/foss-lib"
           target="_blank"
           rel="noreferrer"
           className="stamp-button self-start text-sm"
         >
-          Open a merge request on GitLab
+          Open a merge request on GitHub
         </a>
         <p className="text-xs text-ink/50 mt-2">
           See CONTRIBUTING.md in the repo for the full contribution guide.
