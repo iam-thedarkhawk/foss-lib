@@ -64,3 +64,28 @@ foss-lib/
 - Admin view to approve/reject pending `Submission` rows (there's already a PATCH endpoint for it)
 - Auth if you want submissions tied to accounts rather than anonymous
 - Deploy: frontend → Vercel/Netlify, backend → Render/Railway, DB → Neon/Supabase
+
+## 6. Deploy with Render + Neon/Supabase
+
+The repository includes `render.yaml`, which creates the API and frontend as a
+single Render Blueprint. Use Neon or Supabase for PostgreSQL.
+
+1. Create a PostgreSQL database on [Neon](https://neon.tech) or
+    [Supabase](https://supabase.com), then copy its connection string.
+2. Push this repository to GitHub or GitLab.
+3. In [Render](https://render.com), select **New > Blueprint** and choose the
+    repository. Render will detect `render.yaml`.
+4. Set `DATABASE_URL` for `fosslib-api` to the database connection string.
+    Keep this value private and do not commit it.
+5. Deploy. Render runs the Prisma migrations before starting the API and passes
+    the API URL to the frontend automatically.
+
+After deployment, verify `https://<api-host>/health`, then open the frontend
+URL. To load the starter catalogue into the hosted database, run this locally
+with the hosted `DATABASE_URL` in `backend/.env`:
+
+```bash
+cd backend
+npm install
+npm run prisma:seed
+```
