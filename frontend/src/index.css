@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-paper text-ink font-body;
+    background-image: radial-gradient(#e3dcc4 0.6px, transparent 0.6px);
+    background-size: 14px 14px;
+  }
+}
+
+@layer components {
+  /* Catalogue index-card look: hairline border + hard offset shadow, no soft blur */
+  .catalogue-card {
+    @apply bg-card border border-ink/70 shadow-card rounded-none;
+  }
+
+  .tag-pill {
+    @apply font-mono text-[11px] tracking-tight px-2 py-0.5 border border-ink/40 text-ink/80 bg-paper;
+  }
+
+  .stamp-button {
+    @apply font-display font-semibold border-2 border-ink px-4 py-2 transition-transform;
+  }
+  .stamp-button:hover {
+    transform: rotate(-1deg);
+  }
+}

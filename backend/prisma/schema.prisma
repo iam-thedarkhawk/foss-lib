@@ -1,0 +1,96 @@
+// FOSSLib database schema
+// Run `npm run prisma:migrate` after setting DATABASE_URL in .env
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum License {
+  MIT
+  GPLV2
+  GPLV3
+  APACHE2
+  BSD
+  MPL2
+  AGPL
+  OTHER
+}
+
+enum Platform {
+  WINDOWS
+  MACOS
+  LINUX
+  WEB
+  ANDROID
+  IOS
+  SELF_HOSTED
+}
+
+enum SubmissionStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+model Category {
+  id        String          @id @default(cuid())
+  name      String          @unique
+  slug      String          @unique
+  createdAt DateTime        @default(now())
+  apps      ProprietaryApp[]
+}
+
+model ProprietaryApp {
+  id           String              @id @default(cuid())
+  name         String
+  description  String
+  website      String?
+  category     Category            @relation(fields: [categoryId], references: [id])
+  categoryId   String
+  alternatives AppAlternative[]
+  createdAt    DateTime            @default(now())
+}
+
+model FossAlternative {
+  id          String            @id @default(cuid())
+  name        String
+  description String
+  license     License
+  platforms   Platform[]
+  repoUrl     String
+  website     String?
+  stars       Int?              @default(0)
+  apps        AppAlternative[]
+  createdAt   DateTime          @default(now())
+}
+
+// Join table: one proprietary app can have many FOSS alternatives,
+// and one FOSS alternative can substitute for many proprietary apps.
+model AppAlternative {
+  id             String           @id @default(cuid())
+  app            ProprietaryApp   @relation(fields: [appId], references: [id])
+  appId          String
+  alternative    FossAlternative  @relation(fields: [alternativeId], references: [id])
+  alternativeId  String
+  fitNotes       String?          // e.g. "close 1:1 match" / "missing real-time collab"
+
+  @@unique([appId, alternativeId])
+}
+
+// User-submitted entries awaiting review before becoming real catalogue data.
+model Submission {
+  id                String            @id @default(cuid())
+  proprietaryName    String
+  alternativeName    String
+  alternativeRepoUrl String
+  categoryGuess      String?
+  description        String
+  submitterEmail     String?
+  status             SubmissionStatus  @default(PENDING)
+  createdAt          DateTime          @default(now())
+}
