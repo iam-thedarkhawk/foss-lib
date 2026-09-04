@@ -48,3 +48,15 @@ export interface ProprietaryApp {
   category: Category;
   alternatives: AppAlternativeLink[];
 }
+
+export interface AlternativeDetail extends FossAlternative {
+  apps: Array<{
+    id: string;
+    fitNotes?: string | null;
+    app: Pick<ProprietaryApp, "id" | "name" | "description" | "category">;
+  }>;
+}
+
+export interface AlternativeListItem extends FossAlternative {
+  apps: AlternativeDetail["apps"];
+}

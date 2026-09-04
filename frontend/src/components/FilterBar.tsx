@@ -20,7 +20,7 @@ export default function FilterBar({
       <input
         value={search}
         onChange={(e) => onSearchChange(e.target.value)}
-        placeholder="Search for an app, e.g. Photoshop, Notion, Slack..."
+        placeholder="Search the catalogue, e.g. GIMP, Inkscape, Notion..."
         className="w-full bg-card border border-ink/70 px-4 py-3 font-body text-sm focus:outline-none focus:ring-2 focus:ring-pine"
       />
       <div className="flex flex-wrap gap-2">

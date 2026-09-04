@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import type { ProprietaryApp } from "../types";
 
 const LICENSE_LABEL: Record<string, string> = {
@@ -28,14 +29,12 @@ export default function AppCard({ app }: { app: ProprietaryApp }) {
         {app.alternatives.map((link) => (
           <div key={link.id} className="flex flex-col gap-1">
             <div className="flex items-center gap-2 flex-wrap">
-              <a
-                href={link.alternative.repoUrl}
-                target="_blank"
-                rel="noreferrer"
+              <Link
+                to={`/alternatives/${link.alternative.id}`}
                 className="font-semibold underline decoration-rust decoration-2 underline-offset-2"
               >
                 {link.alternative.name}
-              </a>
+              </Link>
               <span className="tag-pill">{LICENSE_LABEL[link.alternative.license]}</span>
               {link.alternative.platforms.map((p) => (
                 <span key={p} className="tag-pill">

@@ -1,4 +1,4 @@
-import type { Category, ProprietaryApp } from "../types";
+import type { AlternativeDetail, AlternativeListItem, Category, ProprietaryApp } from "../types";
 
 const BASE_URL = import.meta.env.VITE_API_BASE_URL ?? "http://localhost:4000/api";
 
@@ -23,6 +23,17 @@ export const api = {
     if (params?.search) query.set("search", params.search);
     const qs = query.toString();
     return request<ProprietaryApp[]>(`/apps${qs ? `?${qs}` : ""}`, { signal });
+  },
+
+  getAlternative: (id: string, signal?: AbortSignal) =>
+    request<AlternativeDetail>(`/alternatives/${id}`, { signal }),
+
+  getAlternatives: (params?: { category?: string; search?: string }, signal?: AbortSignal) => {
+    const query = new URLSearchParams();
+    if (params?.category) query.set("category", params.category);
+    if (params?.search) query.set("search", params.search);
+    const qs = query.toString();
+    return request<AlternativeListItem[]>(`/alternatives${qs ? `?${qs}` : ""}`, { signal });
   },
 
   submit: (payload: {
