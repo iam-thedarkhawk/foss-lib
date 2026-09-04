@@ -12,15 +12,13 @@ services:
       - key: NODE_ENV
         value: production
 
-  - type: static_site
+  - type: web
     name: fosslib-web
+    runtime: node
     rootDir: frontend
     buildCommand: npm ci && npm run build
-    staticPublishPath: ./dist
+    startCommand: npm start
+    healthCheckPath: /
     envVars:
       - key: VITE_API_BASE_URL
         value: https://${{fosslib-api.RENDER_EXTERNAL_HOSTNAME}}/api
-    routes:
-      - type: rewrite
-        source: /*
-        destination: /index.html
