@@ -8,6 +8,7 @@ services:
     healthCheckPath: /health
     envVars:
       - key: DATABASE_URL
+        value: postgresql://postgres:Deltarune1225@db.ebealwjcndlpgkinyzjb.supabase.co:5432/postgres
         sync: false
       - key: NODE_ENV
         value: production
