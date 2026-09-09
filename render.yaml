@@ -2,7 +2,7 @@
 # Host as a unified full-stack service with zero configuration
 services:
   - type: web
-    name: fosslib
+    name: foss-lib
     runtime: node
     plan: free
     buildCommand: npm run install:all && npm run build
