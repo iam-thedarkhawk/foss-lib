@@ -6,6 +6,7 @@ const initialForm = {
   proprietaryName: "",
   alternativeName: "",
   alternativeRepoUrl: "",
+  alternativeWebsite: "",
   categoryGuess: "",
   description: "",
   submitterEmail: "",
@@ -116,23 +117,39 @@ export default function Submit() {
           />
         </label>
 
-        <label className="flex flex-col gap-1.5">
-          <span className="font-mono text-xs text-ink/80 font-medium">
-            3. Source code repository URL <span className="text-rust font-bold">*</span>
-          </span>
-          <input
-            required
-            type="url"
-            value={form.alternativeRepoUrl}
-            onChange={(e) => update("alternativeRepoUrl", e.target.value)}
-            placeholder="https://github.com/... or https://gitlab.com/..."
-            className="border-2 border-ink/60 px-3.5 py-2.5 bg-paper font-body text-sm focus:outline-none focus:ring-2 focus:ring-pine"
-          />
-        </label>
+        {/* Repository & Website Links placed adjacent */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <label className="flex flex-col gap-1.5">
+            <span className="font-mono text-xs text-ink/80 font-medium">
+              3. Source repository URL <span className="text-rust font-bold">*</span>
+            </span>
+            <input
+              required
+              type="url"
+              value={form.alternativeRepoUrl}
+              onChange={(e) => update("alternativeRepoUrl", e.target.value)}
+              placeholder="https://github.com/... or gitlab"
+              className="border-2 border-ink/60 px-3.5 py-2.5 bg-paper font-body text-sm focus:outline-none focus:ring-2 focus:ring-pine"
+            />
+          </label>
+
+          <label className="flex flex-col gap-1.5">
+            <span className="font-mono text-xs text-ink/80 font-medium">
+              4. Official website URL (optional)
+            </span>
+            <input
+              type="url"
+              value={form.alternativeWebsite}
+              onChange={(e) => update("alternativeWebsite", e.target.value)}
+              placeholder="https://example.org"
+              className="border-2 border-ink/60 px-3.5 py-2.5 bg-paper font-body text-sm focus:outline-none focus:ring-2 focus:ring-pine"
+            />
+          </label>
+        </div>
 
         <label className="flex flex-col gap-1.5">
           <span className="font-mono text-xs text-ink/80 font-medium">
-            4. Suggested category (optional)
+            5. Suggested category (optional)
           </span>
           <input
             value={form.categoryGuess}
@@ -144,7 +161,7 @@ export default function Submit() {
 
         <label className="flex flex-col gap-1.5">
           <span className="font-mono text-xs text-ink/80 font-medium">
-            5. Why is this a strong alternative? Notes & features <span className="text-rust font-bold">*</span>
+            6. Why is this a strong alternative? Notes & features <span className="text-rust font-bold">*</span>
           </span>
           <textarea
             required
@@ -158,7 +175,7 @@ export default function Submit() {
 
         <label className="flex flex-col gap-1.5">
           <span className="font-mono text-xs text-ink/80 font-medium">
-            6. Your email (optional)
+            7. Your email (optional)
           </span>
           <input
             type="email"

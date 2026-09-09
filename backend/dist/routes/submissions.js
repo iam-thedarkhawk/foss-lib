@@ -22,7 +22,7 @@ router.get("/", requireAdmin, async (req, res) => {
 });
 // POST /api/submissions - visitor submits a new alternative for review (PUBLIC)
 router.post("/", async (req, res) => {
-    const { proprietaryName, alternativeName, alternativeRepoUrl, categoryGuess, description, submitterEmail, } = req.body ?? {};
+    const { proprietaryName, alternativeName, alternativeRepoUrl, alternativeWebsite, categoryGuess, description, submitterEmail, } = req.body ?? {};
     if (!proprietaryName || !alternativeName || !alternativeRepoUrl || !description) {
         return res.status(400).json({
             error: "proprietaryName, alternativeName, alternativeRepoUrl and description are required",
@@ -34,6 +34,7 @@ router.post("/", async (req, res) => {
                 proprietaryName: String(proprietaryName).trim(),
                 alternativeName: String(alternativeName).trim(),
                 alternativeRepoUrl: String(alternativeRepoUrl).trim(),
+                alternativeWebsite: alternativeWebsite ? String(alternativeWebsite).trim() : null,
                 categoryGuess: categoryGuess ? String(categoryGuess).trim() : null,
                 description: String(description).trim(),
                 submitterEmail: submitterEmail ? String(submitterEmail).trim() : null,
@@ -91,8 +92,15 @@ router.patch("/:id", requireAdmin, async (req, res) => {
                         license: "MIT",
                         platforms: "LINUX,WINDOWS,MACOS,WEB",
                         repoUrl: submission.alternativeRepoUrl,
+                        website: submission.alternativeWebsite || null,
                         stars: 100,
                     },
+                });
+            }
+            else if (submission.alternativeWebsite && !alternative.website) {
+                await prisma.fossAlternative.update({
+                    where: { id: alternative.id },
+                    data: { website: submission.alternativeWebsite },
                 });
             }
             await prisma.appAlternative.upsert({
@@ -114,6 +122,18 @@ router.patch("/:id", requireAdmin, async (req, res) => {
     }
     catch (error) {
         res.status(500).json({ error: error.message || "Failed to update submission" });
+    }
+});
+// DELETE /api/submissions/:id - delete a submission (REQUIRES CURATOR AUTH)
+router.delete("/:id", requireAdmin, async (req, res) => {
+    try {
+        await prisma.submission.delete({
+            where: { id: req.params.id },
+        });
+        res.json({ ok: true, message: "Submission deleted." });
+    }
+    catch (error) {
+        res.status(500).json({ error: error.message || "Failed to delete submission" });
     }
 });
 export default router;

@@ -86,6 +86,7 @@ export const api = {
     proprietaryName: string;
     alternativeName: string;
     alternativeRepoUrl: string;
+    alternativeWebsite?: string;
     categoryGuess?: string;
     description: string;
     submitterEmail?: string;
@@ -117,5 +118,10 @@ export const api = {
     request<Submission>(`/submissions/${id}`, {
       method: "PATCH",
       body: JSON.stringify({ status }),
+    }),
+
+  deleteSubmission: (id: string) =>
+    request<{ ok: boolean; message: string }>(`/submissions/${id}`, {
+      method: "DELETE",
     }),
 };

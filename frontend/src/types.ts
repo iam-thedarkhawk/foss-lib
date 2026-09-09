@@ -76,6 +76,7 @@ export interface Submission {
   proprietaryName: string;
   alternativeName: string;
   alternativeRepoUrl: string;
+  alternativeWebsite?: string | null;
   categoryGuess?: string | null;
   description: string;
   submitterEmail?: string | null;

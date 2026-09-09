@@ -104,6 +104,23 @@ export default function Admin() {
     }
   }
 
+  async function handleDelete(id: string) {
+    if (!window.confirm("Are you sure you want to permanently delete this submission from the ledger?")) {
+      return;
+    }
+    setActionLoading(id);
+    setNotice(null);
+    try {
+      await api.deleteSubmission(id);
+      setNotice("Submission successfully removed from the ledger.");
+      loadSubmissions();
+    } catch (err: any) {
+      setError(err.message || "Failed to delete submission.");
+    } finally {
+      setActionLoading(null);
+    }
+  }
+
   // --- Lock Screen (When not authenticated) ---
   if (!isAuthenticated) {
     return (
@@ -306,10 +323,18 @@ export default function Admin() {
                     </>
                   )}
                   {sub.status !== "PENDING" && (
-                    <span className="font-mono text-xs text-ink/50 italic">
+                    <span className="font-mono text-xs text-ink/50 italic mr-2">
                       Status finalized
                     </span>
                   )}
+                  <button
+                    onClick={() => handleDelete(sub.id)}
+                    disabled={actionLoading === sub.id}
+                    className="font-mono text-[11px] text-rust/70 hover:text-rust underline p-1"
+                    title="Delete record from ledger"
+                  >
+                    Delete
+                  </button>
                 </div>
               </div>
 
@@ -321,7 +346,7 @@ export default function Admin() {
               </div>
 
               <div className="flex items-center justify-between border-t border-ink/10 pt-3 text-xs flex-wrap gap-2">
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3 flex-wrap">
                   <a
                     href={sub.alternativeRepoUrl}
                     target="_blank"
@@ -330,6 +355,16 @@ export default function Admin() {
                   >
                     Repository Link ↗
                   </a>
+                  {sub.alternativeWebsite && (
+                    <a
+                      href={sub.alternativeWebsite}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="font-mono text-rust hover:text-ink underline font-medium"
+                    >
+                      Official Website ↗
+                    </a>
+                  )}
                   {sub.submitterEmail && (
                     <span className="font-mono text-ink/50">
                       Submitter: {sub.submitterEmail}

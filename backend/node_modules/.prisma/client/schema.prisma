@@ -60,6 +60,7 @@ model Submission {
   proprietaryName    String
   alternativeName    String
   alternativeRepoUrl String
+  alternativeWebsite String?
   categoryGuess      String?
   description        String
   submitterEmail     String?

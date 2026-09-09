@@ -29,6 +29,7 @@ router.post("/", async (req, res) => {
     proprietaryName,
     alternativeName,
     alternativeRepoUrl,
+    alternativeWebsite,
     categoryGuess,
     description,
     submitterEmail,
@@ -46,6 +47,7 @@ router.post("/", async (req, res) => {
         proprietaryName: String(proprietaryName).trim(),
         alternativeName: String(alternativeName).trim(),
         alternativeRepoUrl: String(alternativeRepoUrl).trim(),
+        alternativeWebsite: alternativeWebsite ? String(alternativeWebsite).trim() : null,
         categoryGuess: categoryGuess ? String(categoryGuess).trim() : null,
         description: String(description).trim(),
         submitterEmail: submitterEmail ? String(submitterEmail).trim() : null,
@@ -111,8 +113,14 @@ router.patch("/:id", requireAdmin, async (req, res) => {
             license: "MIT",
             platforms: "LINUX,WINDOWS,MACOS,WEB",
             repoUrl: submission.alternativeRepoUrl,
+            website: submission.alternativeWebsite || null,
             stars: 100,
           },
+        });
+      } else if (submission.alternativeWebsite && !alternative.website) {
+        await prisma.fossAlternative.update({
+          where: { id: alternative.id },
+          data: { website: submission.alternativeWebsite },
         });
       }
 
@@ -135,6 +143,18 @@ router.patch("/:id", requireAdmin, async (req, res) => {
     res.json(submission);
   } catch (error: any) {
     res.status(500).json({ error: error.message || "Failed to update submission" });
+  }
+});
+
+// DELETE /api/submissions/:id - delete a submission (REQUIRES CURATOR AUTH)
+router.delete("/:id", requireAdmin, async (req, res) => {
+  try {
+    await prisma.submission.delete({
+      where: { id: req.params.id },
+    });
+    res.json({ ok: true, message: "Submission deleted." });
+  } catch (error: any) {
+    res.status(500).json({ error: error.message || "Failed to delete submission" });
   }
 });
 
