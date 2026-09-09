@@ -82,12 +82,6 @@ export default function Catalogue() {
             closed, proprietary software with ethical, transparent, and self-hostable tools.
           </p>
         </div>
-        <div className="flex items-center gap-3">
-          <div className="text-right font-mono text-xs text-ink/70">
-            <span className="block font-bold text-ink text-base">85+</span>
-            Alternatives Catalogued
-          </div>
-        </div>
       </div>
 
       <FilterBar
