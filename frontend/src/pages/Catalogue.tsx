@@ -70,20 +70,6 @@ export default function Catalogue() {
   );
 
   return (
-    <div className="max-w-5xl mx-auto px-6 py-8">
-      {/* Intro Banner */}
-      <div className="mb-8 p-6 bg-card border-2 border-ink shadow-card flex flex-col md:flex-row md:items-center justify-between gap-4">
-        <div>
-          <h2 className="font-display text-2xl font-bold text-ink">
-            Free & Open Source Alternatives Library
-          </h2>
-          <p className="text-sm text-ink/80 mt-1 max-w-xl">
-            A curated reference index to help individuals and organizations replace
-            closed, proprietary software with ethical, transparent, and self-hostable tools.
-          </p>
-        </div>
-      </div>
-
       <FilterBar
         categories={categories}
         activeCategory={activeCategory}
