@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { api } from "../api/client";
 
 const initialForm = {
@@ -29,107 +30,160 @@ export default function Submit() {
       setForm(initialForm);
     } catch (err) {
       setStatus("error");
-      setErrorMsg(err instanceof Error ? err.message : "Something went wrong.");
+      setErrorMsg(err instanceof Error ? err.message : "Submission could not be recorded.");
     }
   }
 
   if (status === "done") {
     return (
       <div className="max-w-2xl mx-auto px-6 py-16 text-center">
-        <p className="font-mono text-xs text-pine mb-2">entry filed</p>
-        <h2 className="font-display text-3xl mb-3">Thanks for the submission.</h2>
-        <p className="text-ink/70">
-          It's in the review queue now. Once approved, it'll appear in the catalogue.
-        </p>
-        <button
-          onClick={() => setStatus("idle")}
-          className="stamp-button mt-8"
-        >
-          Submit another
-        </button>
+        <div className="catalogue-card p-8 sm:p-12 border-2 border-ink shadow-card-deep">
+          <span className="font-mono text-xs uppercase tracking-widest text-pine font-bold block mb-2">
+            entry recorded in ledger
+          </span>
+          <h2 className="font-display text-3xl sm:text-4xl font-bold mb-4 text-ink">
+            Thank you for your contribution.
+          </h2>
+          <p className="text-ink/75 leading-relaxed max-w-md mx-auto">
+            Your suggested alternative has been submitted to the review queue. Once
+            moderated and approved, it will be immediately indexed into the public catalogue.
+          </p>
+          <div className="mt-8 flex justify-center gap-4 flex-wrap">
+            <button
+              onClick={() => setStatus("idle")}
+              className="stamp-button text-sm"
+            >
+              Submit Another Entry
+            </button>
+            <Link to="/" className="stamp-button text-sm !bg-pine !text-paper">
+              Browse Catalogue Index
+            </Link>
+          </div>
+        </div>
       </div>
     );
   }
 
   return (
     <div className="max-w-2xl mx-auto px-6 py-10">
-      <p className="font-mono text-xs text-pine mb-2">new catalogue entry</p>
-      <h2 className="font-display text-3xl mb-6">Submit an alternative</h2>
+      <Link
+        to="/"
+        className="font-mono text-xs text-pine hover:text-ink underline underline-offset-4 inline-flex items-center gap-1 mb-6"
+      >
+        <span>← Back to catalogue index</span>
+      </Link>
 
-      <form onSubmit={handleSubmit} className="catalogue-card p-6 flex flex-col gap-5">
-        <label className="flex flex-col gap-1">
-          <span className="font-mono text-xs text-ink/70">Proprietary app it replaces</span>
+      <div className="mb-6">
+        <div className="flex items-center gap-2 mb-1">
+          <span className="inline-block w-2 h-2 rounded-full bg-rust"></span>
+          <p className="font-mono text-xs text-pine uppercase tracking-wider font-semibold">
+            index contribution form
+          </p>
+        </div>
+        <h1 className="font-display text-3xl sm:text-4xl font-bold text-ink">
+          Submit an Open Source Alternative
+        </h1>
+        <p className="text-sm text-ink/70 mt-1.5 leading-relaxed">
+          Help build a comprehensive free-software reference index. Entries will be reviewed
+          and added to the public catalogue.
+        </p>
+      </div>
+
+      <form onSubmit={handleSubmit} className="catalogue-card p-6 sm:p-8 border-2 border-ink shadow-card flex flex-col gap-6">
+        <label className="flex flex-col gap-1.5">
+          <span className="font-mono text-xs text-ink/80 font-medium">
+            1. Proprietary software being replaced <span className="text-rust font-bold">*</span>
+          </span>
           <input
             required
             value={form.proprietaryName}
             onChange={(e) => update("proprietaryName", e.target.value)}
-            placeholder="e.g. Photoshop"
-            className="border border-ink/50 px-3 py-2 bg-paper focus:outline-none focus:ring-2 focus:ring-pine"
+            placeholder="e.g. Adobe Photoshop, Microsoft Teams, AutoCAD..."
+            className="border-2 border-ink/60 px-3.5 py-2.5 bg-paper font-body text-sm focus:outline-none focus:ring-2 focus:ring-pine"
           />
         </label>
 
-        <label className="flex flex-col gap-1">
-          <span className="font-mono text-xs text-ink/70">FOSS alternative name</span>
+        <label className="flex flex-col gap-1.5">
+          <span className="font-mono text-xs text-ink/80 font-medium">
+            2. FOSS alternative name <span className="text-rust font-bold">*</span>
+          </span>
           <input
             required
             value={form.alternativeName}
             onChange={(e) => update("alternativeName", e.target.value)}
-            placeholder="e.g. GIMP"
-            className="border border-ink/50 px-3 py-2 bg-paper focus:outline-none focus:ring-2 focus:ring-pine"
+            placeholder="e.g. GIMP, Zulip, FreeCAD..."
+            className="border-2 border-ink/60 px-3.5 py-2.5 bg-paper font-body text-sm focus:outline-none focus:ring-2 focus:ring-pine"
           />
         </label>
 
-        <label className="flex flex-col gap-1">
-          <span className="font-mono text-xs text-ink/70">Repository URL</span>
+        <label className="flex flex-col gap-1.5">
+          <span className="font-mono text-xs text-ink/80 font-medium">
+            3. Source code repository URL <span className="text-rust font-bold">*</span>
+          </span>
           <input
             required
             type="url"
             value={form.alternativeRepoUrl}
             onChange={(e) => update("alternativeRepoUrl", e.target.value)}
-            placeholder="https://github.com/..."
-            className="border border-ink/50 px-3 py-2 bg-paper focus:outline-none focus:ring-2 focus:ring-pine"
+            placeholder="https://github.com/... or https://gitlab.com/..."
+            className="border-2 border-ink/60 px-3.5 py-2.5 bg-paper font-body text-sm focus:outline-none focus:ring-2 focus:ring-pine"
           />
         </label>
 
-        <label className="flex flex-col gap-1">
-          <span className="font-mono text-xs text-ink/70">Category (optional guess)</span>
+        <label className="flex flex-col gap-1.5">
+          <span className="font-mono text-xs text-ink/80 font-medium">
+            4. Suggested category (optional)
+          </span>
           <input
             value={form.categoryGuess}
             onChange={(e) => update("categoryGuess", e.target.value)}
-            placeholder="e.g. Design"
-            className="border border-ink/50 px-3 py-2 bg-paper focus:outline-none focus:ring-2 focus:ring-pine"
+            placeholder="e.g. Design & Graphics, Office Suites, Communication..."
+            className="border-2 border-ink/60 px-3.5 py-2.5 bg-paper font-body text-sm focus:outline-none focus:ring-2 focus:ring-pine"
           />
         </label>
 
-        <label className="flex flex-col gap-1">
-          <span className="font-mono text-xs text-ink/70">Why is it a good alternative?</span>
+        <label className="flex flex-col gap-1.5">
+          <span className="font-mono text-xs text-ink/80 font-medium">
+            5. Why is this a strong alternative? Notes & features <span className="text-rust font-bold">*</span>
+          </span>
           <textarea
             required
             value={form.description}
             onChange={(e) => update("description", e.target.value)}
             rows={4}
-            className="border border-ink/50 px-3 py-2 bg-paper focus:outline-none focus:ring-2 focus:ring-pine"
+            placeholder="Explain key feature parity, differences, format compatibility, or self-hosting requirements..."
+            className="border-2 border-ink/60 px-3.5 py-2.5 bg-paper font-body text-sm focus:outline-none focus:ring-2 focus:ring-pine"
           />
         </label>
 
-        <label className="flex flex-col gap-1">
-          <span className="font-mono text-xs text-ink/70">Your email (optional)</span>
+        <label className="flex flex-col gap-1.5">
+          <span className="font-mono text-xs text-ink/80 font-medium">
+            6. Your email (optional)
+          </span>
           <input
             type="email"
             value={form.submitterEmail}
             onChange={(e) => update("submitterEmail", e.target.value)}
-            placeholder="in case we have questions"
-            className="border border-ink/50 px-3 py-2 bg-paper focus:outline-none focus:ring-2 focus:ring-pine"
+            placeholder="In case we need clarification on licenses or links"
+            className="border-2 border-ink/60 px-3.5 py-2.5 bg-paper font-body text-sm focus:outline-none focus:ring-2 focus:ring-pine"
           />
         </label>
 
         {status === "error" && (
-          <p className="font-mono text-sm text-rust">{errorMsg}</p>
+          <div className="p-3 bg-rust/10 border-2 border-rust text-rust font-mono text-sm">
+            {errorMsg}
+          </div>
         )}
 
-        <button type="submit" disabled={status === "submitting"} className="stamp-button self-start">
-          {status === "submitting" ? "Filing..." : "File entry"}
-        </button>
+        <div className="pt-2">
+          <button
+            type="submit"
+            disabled={status === "submitting"}
+            className="stamp-button !bg-pine !text-paper hover:!bg-pine/90 text-sm disabled:opacity-50"
+          >
+            {status === "submitting" ? "Filing in Ledger..." : "Submit to Review Queue"}
+          </button>
+        </div>
       </form>
     </div>
   );

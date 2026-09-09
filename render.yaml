@@ -1,24 +1,21 @@
+# FOSSLib Render Blueprint
+# Host as a unified full-stack service with zero configuration
 services:
   - type: web
-    name: fosslib-api
+    name: fosslib
     runtime: node
-    rootDir: backend
-    buildCommand: npm ci && npm run prisma:generate && npm run build
-    startCommand: npm run prisma:migrate:deploy && npm start
+    plan: free
+    buildCommand: npm run install:all && npm run build
+    startCommand: npm run db:push && npm run seed && npm start
     healthCheckPath: /health
     envVars:
       - key: DATABASE_URL
         sync: false
+        # Paste your PostgreSQL URL here (e.g. from Neon or Supabase)
+        # Or leave as SQLite file for persistent disk instances: "file:./dev.db"
+      - key: ADMIN_TOKEN
+        generateValue: true
       - key: NODE_ENV
         value: production
-
-  - type: web
-    name: fosslib-web
-    runtime: node
-    rootDir: frontend
-    buildCommand: npm ci && npm run build
-    startCommand: npm start
-    healthCheckPath: /
-    envVars:
-      - key: VITE_API_BASE_URL
-        value: https://${{fosslib-api.RENDER_EXTERNAL_HOSTNAME}}/api
+      - key: PORT
+        value: 10000

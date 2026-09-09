@@ -1,0 +1,1491 @@
+[
+  {
+    "name": "AI & Machine Learning",
+    "slug": "ai-machine-learning",
+    "icon": "\ud83e\udd16",
+    "description": "Open source alternatives for artificial intelligence, language models, and machine learning.",
+    "apps": [
+      {
+        "name": "ChatGPT",
+        "description": "Popular proprietary tool: ChatGPT",
+        "website": null,
+        "alternatives": [
+          {
+            "name": "Ollama",
+            "description": "Get up and running with Llama 3, Mistral, Gemma, and other large language models.",
+            "website": "https://ollama.com/",
+            "repoUrl": "https://github.com/ollama/ollama",
+            "license": "MIT",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX"
+            ],
+            "fitNotes": "Tags: llm, local-ai, inference"
+          },
+          {
+            "name": "Open WebUI",
+            "description": "User-friendly AI Interface (Formerly Ollama WebUI).",
+            "website": "https://openwebui.com/",
+            "repoUrl": "https://github.com/open-webui/open-webui",
+            "license": "MIT",
+            "platforms": [
+              "LINUX",
+              "WEB",
+              "MACOS",
+              "WINDOWS"
+            ],
+            "fitNotes": "Tags: ui, llm, self-hosted"
+          },
+          {
+            "name": "LocalAI",
+            "description": "Free, Open Source OpenAI alternative. LocalAI act as a drop-in replacement REST API that's compatible with OpenAI API specifications.",
+            "website": "https://localai.io/",
+            "repoUrl": "https://github.com/mudler/LocalAI",
+            "license": "MIT",
+            "platforms": [
+              "LINUX",
+              "MACOS",
+              "WINDOWS"
+            ],
+            "fitNotes": "Tags: llm, api, local-ai"
+          },
+          {
+            "name": "Jan",
+            "description": "Jan is an open source alternative to ChatGPT that runs 100% offline on your computer.",
+            "website": "https://jan.ai/",
+            "repoUrl": "https://github.com/janhq/jan",
+            "license": "AGPL-3.0",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX"
+            ],
+            "fitNotes": "Tags: llm, offline, desktop"
+          },
+          {
+            "name": "GPT4All",
+            "description": "A free-to-use, locally running, privacy-aware chatbot. No GPU or internet required.",
+            "website": "https://gpt4all.io/",
+            "repoUrl": "https://github.com/nomic-ai/gpt4all",
+            "license": "MIT",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX"
+            ],
+            "fitNotes": "Tags: llm, local-ai, desktop"
+          }
+        ]
+      },
+      {
+        "name": "Midjourney",
+        "description": "Popular proprietary tool: Midjourney",
+        "website": null,
+        "alternatives": [
+          {
+            "name": "Stable Diffusion (AUTOMATIC1111/ComfyUI)",
+            "description": "Open source image generation model.",
+            "website": "https://stability.ai/",
+            "repoUrl": "https://github.com/AUTOMATIC1111/stable-diffusion-webui",
+            "license": "AGPL-3.0",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX"
+            ],
+            "fitNotes": "Tags: image-generation, ai-art"
+          }
+        ]
+      },
+      {
+        "name": "Google Vertex AI",
+        "description": "Popular proprietary tool: Google Vertex AI",
+        "website": null,
+        "alternatives": [
+          {
+            "name": "Hugging Face Transformers",
+            "description": "State-of-the-art Machine Learning for Pytorch, TensorFlow, and JAX.",
+            "website": "https://huggingface.co/",
+            "repoUrl": "https://github.com/huggingface/transformers",
+            "license": "Apache-2.0",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX"
+            ],
+            "fitNotes": "Tags: ml, framework, llm"
+          },
+          {
+            "name": "llama.cpp",
+            "description": "Port of Facebook's LLaMA model in C/C++.",
+            "website": "https://github.com/ggerganov/llama.cpp",
+            "repoUrl": "https://github.com/ggerganov/llama.cpp",
+            "license": "MIT",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX"
+            ],
+            "fitNotes": "Tags: llm, inference, cpp"
+          }
+        ]
+      },
+      {
+        "name": "Grammarly",
+        "description": "Popular proprietary tool: Grammarly",
+        "website": null,
+        "alternatives": [
+          {
+            "name": "LanguageTool",
+            "description": "Style and Grammar Checker for 25+ Languages.",
+            "website": "https://languagetool.org/",
+            "repoUrl": "https://github.com/languagetool-org/languagetool",
+            "license": "LGPL-2.1",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX",
+              "WEB"
+            ],
+            "fitNotes": "Tags: grammar, writing, nlp"
+          }
+        ]
+      },
+      {
+        "name": "Google Translate",
+        "description": "Popular proprietary tool: Google Translate",
+        "website": null,
+        "alternatives": [
+          {
+            "name": "LibreTranslate",
+            "description": "Free and Open Source Machine Translation API. 100% self-hosted, offline capability.",
+            "website": "https://libretranslate.com/",
+            "repoUrl": "https://github.com/LibreTranslate/LibreTranslate",
+            "license": "AGPL-3.0",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX",
+              "WEB"
+            ],
+            "fitNotes": "Tags: translation, self-hosted, nlp"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Cloud Storage",
+    "slug": "cloud-storage",
+    "icon": "\u2601\ufe0f",
+    "description": "File syncing, sharing, and self-hosted cloud solutions.",
+    "apps": [
+      {
+        "name": "Google Drive",
+        "description": "Popular proprietary tool: Google Drive",
+        "website": null,
+        "alternatives": [
+          {
+            "name": "Nextcloud",
+            "description": "The open source file sync and share solution.",
+            "website": "https://nextcloud.com/",
+            "repoUrl": "https://github.com/nextcloud/server",
+            "license": "AGPL-3.0-or-later",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX",
+              "WEB",
+              "ANDROID",
+              "IOS"
+            ],
+            "fitNotes": "Tags: file sync, collaboration, self-hosted, cloud"
+          },
+          {
+            "name": "ownCloud",
+            "description": "The secure file sharing and collaboration platform.",
+            "website": "https://owncloud.com/",
+            "repoUrl": "https://github.com/owncloud/core",
+            "license": "AGPL-3.0-or-later",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX",
+              "WEB",
+              "ANDROID",
+              "IOS"
+            ],
+            "fitNotes": "Tags: file sync, self-hosted, cloud"
+          },
+          {
+            "name": "Seafile",
+            "description": "High performance file syncing and sharing.",
+            "website": "https://www.seafile.com/",
+            "repoUrl": "https://github.com/haiwen/seafile",
+            "license": "GPL-2.0-only",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX",
+              "WEB",
+              "ANDROID",
+              "IOS"
+            ],
+            "fitNotes": "Tags: file sync, self-hosted, performance"
+          }
+        ]
+      },
+      {
+        "name": "Dropbox",
+        "description": "Popular proprietary tool: Dropbox",
+        "website": null,
+        "alternatives": [
+          {
+            "name": "Syncthing",
+            "description": "A continuous file synchronization program.",
+            "website": "https://syncthing.net/",
+            "repoUrl": "https://github.com/syncthing/syncthing",
+            "license": "MPL-2.0",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX",
+              "ANDROID"
+            ],
+            "fitNotes": "Tags: file sync, p2p, decentralized"
+          }
+        ]
+      },
+      {
+        "name": "Amazon S3",
+        "description": "Popular proprietary tool: Amazon S3",
+        "website": null,
+        "alternatives": [
+          {
+            "name": "MinIO",
+            "description": "High Performance Object Storage.",
+            "website": "https://min.io/",
+            "repoUrl": "https://github.com/minio/minio",
+            "license": "AGPL-3.0-only",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX",
+              "WEB"
+            ],
+            "fitNotes": "Tags: object storage, s3-compatible, self-hosted"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Communication",
+    "slug": "communication",
+    "icon": "\ud83d\udcac",
+    "description": "Team chat, video conferencing, and email clients.",
+    "apps": [
+      {
+        "name": "Slack",
+        "description": "Popular proprietary tool: Slack",
+        "website": null,
+        "alternatives": [
+          {
+            "name": "Mattermost",
+            "description": "Open source platform for secure collaboration across the entire software development lifecycle.",
+            "website": "https://mattermost.com/",
+            "repoUrl": "https://github.com/mattermost/mattermost",
+            "license": "AGPL-3.0-only",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX",
+              "WEB",
+              "ANDROID",
+              "IOS"
+            ],
+            "fitNotes": "Tags: team chat, collaboration, self-hosted"
+          },
+          {
+            "name": "Rocket.Chat",
+            "description": "Free, unlimited and open source team chat.",
+            "website": "https://rocket.chat/",
+            "repoUrl": "https://github.com/RocketChat/Rocket.Chat",
+            "license": "MIT",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX",
+              "WEB",
+              "ANDROID",
+              "IOS"
+            ],
+            "fitNotes": "Tags: team chat, collaboration, self-hosted"
+          },
+          {
+            "name": "Zulip",
+            "description": "Chat for distributed teams.",
+            "website": "https://zulip.com/",
+            "repoUrl": "https://github.com/zulip/zulip",
+            "license": "Apache-2.0",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX",
+              "WEB",
+              "ANDROID",
+              "IOS"
+            ],
+            "fitNotes": "Tags: team chat, collaboration, self-hosted"
+          }
+        ]
+      },
+      {
+        "name": "Discord",
+        "description": "Popular proprietary tool: Discord",
+        "website": null,
+        "alternatives": [
+          {
+            "name": "Element",
+            "description": "A secure and independent communications platform built on Matrix.",
+            "website": "https://element.io/",
+            "repoUrl": "https://github.com/element-hq/element-web",
+            "license": "Apache-2.0",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX",
+              "WEB",
+              "ANDROID",
+              "IOS"
+            ],
+            "fitNotes": "Tags: chat, collaboration, matrix"
+          },
+          {
+            "name": "Revolt",
+            "description": "User-first chat platform built with modern web technologies.",
+            "website": "https://revolt.chat/",
+            "repoUrl": "https://github.com/revoltchat/backend",
+            "license": "AGPL-3.0-only",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX",
+              "WEB",
+              "ANDROID",
+              "IOS"
+            ],
+            "fitNotes": "Tags: chat, community"
+          }
+        ]
+      },
+      {
+        "name": "Zoom",
+        "description": "Popular proprietary tool: Zoom",
+        "website": null,
+        "alternatives": [
+          {
+            "name": "Jitsi Meet",
+            "description": "Secure, simple and scalable video conferences.",
+            "website": "https://jitsi.org/jitsi-meet/",
+            "repoUrl": "https://github.com/jitsi/jitsi-meet",
+            "license": "Apache-2.0",
+            "platforms": [
+              "WEB",
+              "ANDROID",
+              "IOS"
+            ],
+            "fitNotes": "Tags: video conferencing, meetings, self-hosted"
+          }
+        ]
+      },
+      {
+        "name": "Gmail",
+        "description": "Popular proprietary tool: Gmail",
+        "website": null,
+        "alternatives": [
+          {
+            "name": "Thunderbird",
+            "description": "A free email application that's easy to set up and customize - and it's loaded with great features!",
+            "website": "https://www.thunderbird.net/",
+            "repoUrl": "https://hg.mozilla.org/comm-central/",
+            "license": "MPL-2.0",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX"
+            ],
+            "fitNotes": "Tags: email client, offline"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Design & Graphics",
+    "slug": "design-graphics",
+    "icon": "\ud83c\udfa8",
+    "description": "Tools for raster/vector graphics, UI design, and 3D modeling.",
+    "apps": [
+      {
+        "name": "Adobe Photoshop",
+        "description": "Popular proprietary tool: Adobe Photoshop",
+        "website": null,
+        "alternatives": [
+          {
+            "name": "GIMP",
+            "description": "GNU Image Manipulation Program for photo retouching, image composition, and image authoring.",
+            "website": "https://www.gimp.org/",
+            "repoUrl": "https://gitlab.gnome.org/GNOME/gimp",
+            "license": "GPL-3.0-or-later",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX"
+            ],
+            "fitNotes": "Tags: raster graphics, photo editing"
+          },
+          {
+            "name": "Krita",
+            "description": "A professional FREE and open source painting program.",
+            "website": "https://krita.org/",
+            "repoUrl": "https://invent.kde.org/graphics/krita",
+            "license": "GPL-3.0-or-later",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX",
+              "ANDROID"
+            ],
+            "fitNotes": "Tags: digital painting, raster graphics, illustration"
+          }
+        ]
+      },
+      {
+        "name": "Adobe Illustrator",
+        "description": "Popular proprietary tool: Adobe Illustrator",
+        "website": null,
+        "alternatives": [
+          {
+            "name": "Inkscape",
+            "description": "Professional vector graphics editor.",
+            "website": "https://inkscape.org/",
+            "repoUrl": "https://gitlab.com/inkscape/inkscape",
+            "license": "GPL-3.0-or-later",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX"
+            ],
+            "fitNotes": "Tags: vector graphics, illustration"
+          }
+        ]
+      },
+      {
+        "name": "Figma",
+        "description": "Popular proprietary tool: Figma",
+        "website": null,
+        "alternatives": [
+          {
+            "name": "Penpot",
+            "description": "Open-source design and prototyping platform meant for cross-domain teams.",
+            "website": "https://penpot.app/",
+            "repoUrl": "https://github.com/penpot/penpot",
+            "license": "MPL-2.0",
+            "platforms": [
+              "WEB"
+            ],
+            "fitNotes": "Tags: ui design, prototyping, collaboration"
+          }
+        ]
+      },
+      {
+        "name": "Adobe Premiere Pro",
+        "description": "Popular proprietary tool: Adobe Premiere Pro",
+        "website": null,
+        "alternatives": [
+          {
+            "name": "Blender",
+            "description": "The free and open source 3D creation suite, includes a capable video editor.",
+            "website": "https://www.blender.org/",
+            "repoUrl": "https://projects.blender.org/blender/blender",
+            "license": "GPL-2.0-or-later",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX"
+            ],
+            "fitNotes": "Tags: 3d modeling, video editing, animation"
+          }
+        ]
+      },
+      {
+        "name": "Adobe Lightroom",
+        "description": "Popular proprietary tool: Adobe Lightroom",
+        "website": null,
+        "alternatives": [
+          {
+            "name": "Darktable",
+            "description": "An open source photography workflow application and raw developer.",
+            "website": "https://www.darktable.org/",
+            "repoUrl": "https://github.com/darktable-org/darktable",
+            "license": "GPL-3.0-or-later",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX"
+            ],
+            "fitNotes": "Tags: photo management, raw editing, photography"
+          },
+          {
+            "name": "RawTherapee",
+            "description": "A powerful, cross-platform raw photo processing system.",
+            "website": "https://rawtherapee.com/",
+            "repoUrl": "https://github.com/Beep6581/RawTherapee",
+            "license": "GPL-3.0-or-later",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX"
+            ],
+            "fitNotes": "Tags: raw editing, photography"
+          },
+          {
+            "name": "DigiKam",
+            "description": "Advanced digital photo management application.",
+            "website": "https://www.digikam.org/",
+            "repoUrl": "https://invent.kde.org/graphics/digikam",
+            "license": "GPL-2.0-or-later",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX"
+            ],
+            "fitNotes": "Tags: photo management, photography"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Development Tools",
+    "slug": "development-tools",
+    "icon": "\ud83d\udcbb",
+    "description": "Tools for writing, testing, and managing software.",
+    "apps": [
+      {
+        "name": "JetBrains IDEs",
+        "description": "Popular proprietary tool: JetBrains IDEs",
+        "website": null,
+        "alternatives": [
+          {
+            "name": "VSCodium",
+            "description": "Community-driven, freely-licensed binary distribution of VS Code without Microsoft telemetry.",
+            "website": "https://vscodium.com/",
+            "repoUrl": "https://github.com/VSCodium/vscodium",
+            "license": "MIT",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX"
+            ],
+            "fitNotes": "Tags: editor, ide"
+          },
+          {
+            "name": "Neovim",
+            "description": "Hyperextensible Vim-based text editor.",
+            "website": "https://neovim.io/",
+            "repoUrl": "https://github.com/neovim/neovim",
+            "license": "Apache-2.0",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX"
+            ],
+            "fitNotes": "Tags: editor, terminal"
+          },
+          {
+            "name": "Apache NetBeans",
+            "description": "Development environment, tooling platform, and application framework.",
+            "website": "https://netbeans.apache.org/",
+            "repoUrl": "https://github.com/apache/netbeans",
+            "license": "Apache-2.0",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX"
+            ],
+            "fitNotes": "Tags: ide, java"
+          },
+          {
+            "name": "Eclipse IDE",
+            "description": "A free open-source IDE for Java, C/C++, PHP, JavaScript and more.",
+            "website": "https://www.eclipse.org/ide/",
+            "repoUrl": "https://github.com/eclipse",
+            "license": "EPL-2.0",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX"
+            ],
+            "fitNotes": "Tags: ide, java"
+          }
+        ]
+      },
+      {
+        "name": "GitHub",
+        "description": "Popular proprietary tool: GitHub",
+        "website": null,
+        "alternatives": [
+          {
+            "name": "Gitea",
+            "description": "A painless self-hosted Git service.",
+            "website": "https://about.gitea.com/",
+            "repoUrl": "https://github.com/go-gitea/gitea",
+            "license": "MIT",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX"
+            ],
+            "fitNotes": "Tags: git, self-hosted, collaboration"
+          },
+          {
+            "name": "Forgejo",
+            "description": "A self-hosted lightweight software forge.",
+            "website": "https://forgejo.org/",
+            "repoUrl": "https://codeberg.org/forgejo/forgejo",
+            "license": "MIT",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX"
+            ],
+            "fitNotes": "Tags: git, self-hosted, forge"
+          },
+          {
+            "name": "GitLab CE",
+            "description": "An open source end-to-end software development platform with built-in version control.",
+            "website": "https://about.gitlab.com/",
+            "repoUrl": "https://gitlab.com/gitlab-org/gitlab-foss",
+            "license": "MIT",
+            "platforms": [
+              "LINUX"
+            ],
+            "fitNotes": "Tags: git, ci/cd, devops"
+          }
+        ]
+      },
+      {
+        "name": "Postman",
+        "description": "Popular proprietary tool: Postman",
+        "website": null,
+        "alternatives": [
+          {
+            "name": "Hoppscotch",
+            "description": "Open source API development ecosystem.",
+            "website": "https://hoppscotch.io/",
+            "repoUrl": "https://github.com/hoppscotch/hoppscotch",
+            "license": "MIT",
+            "platforms": [
+              "WEB",
+              "WINDOWS",
+              "MACOS",
+              "LINUX"
+            ],
+            "fitNotes": "Tags: api, testing"
+          },
+          {
+            "name": "Bruno",
+            "description": "Open-source IDE for exploring and testing APIs.",
+            "website": "https://www.usebruno.com/",
+            "repoUrl": "https://github.com/usebruno/bruno",
+            "license": "MIT",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX"
+            ],
+            "fitNotes": "Tags: api, testing"
+          },
+          {
+            "name": "Insomnia",
+            "description": "Open source API client for GraphQL, REST, and gRPC.",
+            "website": "https://insomnia.rest/",
+            "repoUrl": "https://github.com/Kong/insomnia",
+            "license": "MIT",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX"
+            ],
+            "fitNotes": "Tags: api, testing"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Media",
+    "slug": "media",
+    "icon": "\ud83c\udfac",
+    "description": "Applications for creating, editing, and consuming media.",
+    "apps": [
+      {
+        "name": "Spotify",
+        "description": "Popular proprietary tool: Spotify",
+        "website": null,
+        "alternatives": [
+          {
+            "name": "Navidrome",
+            "description": "Modern Music Server and Streamer compatible with Subsonic/Airsonic.",
+            "website": "https://www.navidrome.org/",
+            "repoUrl": "https://github.com/navidrome/navidrome",
+            "license": "GPL-3.0",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX"
+            ],
+            "fitNotes": "Tags: music, self-hosted, streaming"
+          },
+          {
+            "name": "Funkwhale",
+            "description": "A community-driven project that lets you listen and share music and audio within a decentralized, open network.",
+            "website": "https://funkwhale.audio/",
+            "repoUrl": "https://dev.funkwhale.audio/funkwhale/funkwhale",
+            "license": "AGPL-3.0",
+            "platforms": [
+              "LINUX",
+              "WEB"
+            ],
+            "fitNotes": "Tags: music, federated, streaming"
+          }
+        ]
+      },
+      {
+        "name": "Adobe Premiere Pro",
+        "description": "Popular proprietary tool: Adobe Premiere Pro",
+        "website": null,
+        "alternatives": [
+          {
+            "name": "Kdenlive",
+            "description": "Free and open source video editor based on MLT Framework and KDE Frameworks.",
+            "website": "https://kdenlive.org/",
+            "repoUrl": "https://invent.kde.org/multimedia/kdenlive",
+            "license": "GPL-3.0",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX"
+            ],
+            "fitNotes": "Tags: video, editor"
+          },
+          {
+            "name": "Shotcut",
+            "description": "A free, open source, cross-platform video editor.",
+            "website": "https://shotcut.org/",
+            "repoUrl": "https://github.com/mltframework/shotcut",
+            "license": "GPL-3.0",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX"
+            ],
+            "fitNotes": "Tags: video, editor"
+          }
+        ]
+      },
+      {
+        "name": "Adobe Audition",
+        "description": "Popular proprietary tool: Adobe Audition",
+        "website": null,
+        "alternatives": [
+          {
+            "name": "Audacity",
+            "description": "Free, open source, cross-platform audio software for multi-track recording and editing.",
+            "website": "https://www.audacityteam.org/",
+            "repoUrl": "https://github.com/audacity/audacity",
+            "license": "GPL-2.0",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX"
+            ],
+            "fitNotes": "Tags: audio, editor"
+          }
+        ]
+      },
+      {
+        "name": "iTunes",
+        "description": "Popular proprietary tool: iTunes",
+        "website": null,
+        "alternatives": [
+          {
+            "name": "VLC media player",
+            "description": "VLC is a free and open source cross-platform multimedia player and framework.",
+            "website": "https://www.videolan.org/vlc/",
+            "repoUrl": "https://code.videolan.org/videolan/vlc",
+            "license": "GPL-2.0",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX",
+              "ANDROID",
+              "IOS"
+            ],
+            "fitNotes": "Tags: player, multimedia"
+          },
+          {
+            "name": "mpv",
+            "description": "A free, open source, and cross-platform media player.",
+            "website": "https://mpv.io/",
+            "repoUrl": "https://github.com/mpv-player/mpv",
+            "license": "GPL-2.0",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX",
+              "ANDROID"
+            ],
+            "fitNotes": "Tags: player, video"
+          }
+        ]
+      },
+      {
+        "name": "Netflix",
+        "description": "Popular proprietary tool: Netflix",
+        "website": null,
+        "alternatives": [
+          {
+            "name": "Jellyfin",
+            "description": "The Free Software Media System. It puts you in control of managing and streaming your media.",
+            "website": "https://jellyfin.org/",
+            "repoUrl": "https://github.com/jellyfin/jellyfin",
+            "license": "GPL-2.0",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX",
+              "ANDROID",
+              "IOS",
+              "WEB"
+            ],
+            "fitNotes": "Tags: streaming, self-hosted, movies"
+          },
+          {
+            "name": "Kodi",
+            "description": "Free and open source home theater software.",
+            "website": "https://kodi.tv/",
+            "repoUrl": "https://github.com/xbmc/xbmc",
+            "license": "GPL-2.0",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX",
+              "ANDROID",
+              "IOS"
+            ],
+            "fitNotes": "Tags: streaming, media-center"
+          }
+        ]
+      },
+      {
+        "name": "Broadcasting Software",
+        "description": "Popular proprietary tool: Broadcasting Software",
+        "website": null,
+        "alternatives": [
+          {
+            "name": "OBS Studio",
+            "description": "Free and open source software for video recording and live streaming.",
+            "website": "https://obsproject.com/",
+            "repoUrl": "https://github.com/obsproject/obs-studio",
+            "license": "GPL-2.0",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX"
+            ],
+            "fitNotes": "Tags: streaming, recording, broadcasting"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Office Suites",
+    "slug": "office-suites",
+    "icon": "\ud83d\udcdd",
+    "description": "Word processors, spreadsheets, and presentation software.",
+    "apps": [
+      {
+        "name": "Microsoft Office",
+        "description": "Popular proprietary tool: Microsoft Office",
+        "website": null,
+        "alternatives": [
+          {
+            "name": "LibreOffice",
+            "description": "A powerful, free, and open-source office suite.",
+            "website": "https://www.libreoffice.org/",
+            "repoUrl": "https://git.libreoffice.org/core",
+            "license": "MPL-2.0",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX"
+            ],
+            "fitNotes": "Tags: offline, word processor, spreadsheet, presentation"
+          },
+          {
+            "name": "Apache OpenOffice",
+            "description": "Open-source office software suite for word processing, spreadsheets, presentations, graphics, databases.",
+            "website": "https://www.openoffice.org/",
+            "repoUrl": "https://github.com/apache/openoffice",
+            "license": "Apache-2.0",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX"
+            ],
+            "fitNotes": "Tags: offline, office"
+          }
+        ]
+      },
+      {
+        "name": "Google Workspace",
+        "description": "Popular proprietary tool: Google Workspace",
+        "website": null,
+        "alternatives": [
+          {
+            "name": "OnlyOffice",
+            "description": "A powerful and secure online office suite.",
+            "website": "https://www.onlyoffice.com/",
+            "repoUrl": "https://github.com/ONLYOFFICE/DocumentServer",
+            "license": "AGPL-3.0-only",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX",
+              "WEB",
+              "ANDROID",
+              "IOS"
+            ],
+            "fitNotes": "Tags: online, collaboration, self-hosted"
+          },
+          {
+            "name": "Collabora Online",
+            "description": "A powerful LibreOffice-based online office suite.",
+            "website": "https://www.collaboraoffice.com/",
+            "repoUrl": "https://github.com/CollaboraOnline/online",
+            "license": "MPL-2.0",
+            "platforms": [
+              "WEB",
+              "ANDROID",
+              "IOS"
+            ],
+            "fitNotes": "Tags: online, collaboration, self-hosted"
+          },
+          {
+            "name": "CryptPad",
+            "description": "Collaboration suite, end-to-end encrypted and open-source.",
+            "website": "https://cryptpad.fr/",
+            "repoUrl": "https://github.com/cryptpad/cryptpad",
+            "license": "AGPL-3.0-only",
+            "platforms": [
+              "WEB"
+            ],
+            "fitNotes": "Tags: online, collaboration, encrypted, privacy"
+          },
+          {
+            "name": "Etherpad",
+            "description": "A highly customizable open source online editor providing collaborative editing in really real-time.",
+            "website": "https://etherpad.org/",
+            "repoUrl": "https://github.com/ether/etherpad-lite",
+            "license": "Apache-2.0",
+            "platforms": [
+              "WEB"
+            ],
+            "fitNotes": "Tags: online, collaboration, text editor"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Operating Systems",
+    "slug": "operating-systems",
+    "icon": "\ud83d\udda5\ufe0f",
+    "description": "Core software to run on computers and mobile devices.",
+    "apps": [
+      {
+        "name": "Windows / macOS",
+        "description": "Popular proprietary tool: Windows / macOS",
+        "website": null,
+        "alternatives": [
+          {
+            "name": "Ubuntu",
+            "description": "A complete Linux operating system, freely available with both community and professional support.",
+            "website": "https://ubuntu.com/",
+            "repoUrl": "https://github.com/canonical",
+            "license": "GPL",
+            "platforms": [
+              "LINUX"
+            ],
+            "fitNotes": "Tags: os, desktop, server"
+          },
+          {
+            "name": "Fedora",
+            "description": "A Linux distribution developed by the community-supported Fedora Project.",
+            "website": "https://fedoraproject.org/",
+            "repoUrl": "https://pagure.io/fedora-workstation",
+            "license": "GPL",
+            "platforms": [
+              "LINUX"
+            ],
+            "fitNotes": "Tags: os, desktop, server"
+          },
+          {
+            "name": "Linux Mint",
+            "description": "A popular, easy-to-use Linux distribution based on Ubuntu.",
+            "website": "https://linuxmint.com/",
+            "repoUrl": "https://github.com/linuxmint",
+            "license": "GPL",
+            "platforms": [
+              "LINUX"
+            ],
+            "fitNotes": "Tags: os, desktop"
+          },
+          {
+            "name": "Debian",
+            "description": "The Universal Operating System. A free operating system for your computer.",
+            "website": "https://www.debian.org/",
+            "repoUrl": "https://salsa.debian.org/public",
+            "license": "GPL",
+            "platforms": [
+              "LINUX"
+            ],
+            "fitNotes": "Tags: os, server, desktop"
+          },
+          {
+            "name": "Arch Linux",
+            "description": "A simple, lightweight distribution.",
+            "website": "https://archlinux.org/",
+            "repoUrl": "https://gitlab.archlinux.org/",
+            "license": "GPL",
+            "platforms": [
+              "LINUX"
+            ],
+            "fitNotes": "Tags: os, desktop, advanced"
+          },
+          {
+            "name": "Pop!_OS",
+            "description": "An operating system for STEM and creative professionals who use their computer as a tool to discover and create.",
+            "website": "https://pop.system76.com/",
+            "repoUrl": "https://github.com/pop-os",
+            "license": "GPL",
+            "platforms": [
+              "LINUX"
+            ],
+            "fitNotes": "Tags: os, desktop"
+          },
+          {
+            "name": "elementary OS",
+            "description": "The thoughtful, capable, and ethical replacement for Windows and macOS.",
+            "website": "https://elementary.io/",
+            "repoUrl": "https://github.com/elementary",
+            "license": "GPL",
+            "platforms": [
+              "LINUX"
+            ],
+            "fitNotes": "Tags: os, desktop, mac-like"
+          },
+          {
+            "name": "FreeBSD",
+            "description": "An operating system for a variety of platforms which focuses on features, speed, and stability.",
+            "website": "https://www.freebsd.org/",
+            "repoUrl": "https://github.com/freebsd/freebsd-src",
+            "license": "BSD-2-Clause",
+            "platforms": [
+              "LINUX"
+            ],
+            "fitNotes": "Tags: os, server, unix"
+          }
+        ]
+      },
+      {
+        "name": "Android / iOS",
+        "description": "Popular proprietary tool: Android / iOS",
+        "website": null,
+        "alternatives": [
+          {
+            "name": "GrapheneOS",
+            "description": "The private and secure mobile operating system with Android app compatibility.",
+            "website": "https://grapheneos.org/",
+            "repoUrl": "https://github.com/GrapheneOS",
+            "license": "MIT",
+            "platforms": [
+              "ANDROID"
+            ],
+            "fitNotes": "Tags: os, mobile, privacy"
+          },
+          {
+            "name": "LineageOS",
+            "description": "A free and open-source operating system for various devices, based on the Android mobile platform.",
+            "website": "https://lineageos.org/",
+            "repoUrl": "https://github.com/LineageOS",
+            "license": "Apache-2.0",
+            "platforms": [
+              "ANDROID"
+            ],
+            "fitNotes": "Tags: os, mobile, rom"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Productivity",
+    "slug": "productivity",
+    "icon": "\u2705",
+    "description": "Tools for managing tasks, notes, and workflows.",
+    "apps": [
+      {
+        "name": "Notion",
+        "description": "Popular proprietary tool: Notion",
+        "website": null,
+        "alternatives": [
+          {
+            "name": "AppFlowy",
+            "description": "AppFlowy is an open-source alternative to Notion. You are in charge of your data and customizations.",
+            "website": "https://appflowy.io/",
+            "repoUrl": "https://github.com/AppFlowy-IO/AppFlowy",
+            "license": "AGPL-3.0",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX",
+              "ANDROID",
+              "IOS"
+            ],
+            "fitNotes": "Tags: notes, workspace, offline"
+          },
+          {
+            "name": "Logseq",
+            "description": "A privacy-first, open-source platform for knowledge management and collaboration.",
+            "website": "https://logseq.com/",
+            "repoUrl": "https://github.com/logseq/logseq",
+            "license": "AGPL-3.0",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX",
+              "ANDROID",
+              "IOS"
+            ],
+            "fitNotes": "Tags: notes, pkm, outliner"
+          }
+        ]
+      },
+      {
+        "name": "Evernote",
+        "description": "Popular proprietary tool: Evernote",
+        "website": null,
+        "alternatives": [
+          {
+            "name": "Joplin",
+            "description": "An open source note taking and to-do application with synchronization capabilities.",
+            "website": "https://joplinapp.org/",
+            "repoUrl": "https://github.com/laurent22/joplin",
+            "license": "MIT",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX",
+              "ANDROID",
+              "IOS"
+            ],
+            "fitNotes": "Tags: notes, markdown, sync"
+          }
+        ]
+      },
+      {
+        "name": "Todoist",
+        "description": "Popular proprietary tool: Todoist",
+        "website": null,
+        "alternatives": [
+          {
+            "name": "Vikunja",
+            "description": "The open-source, self-hostable to-do app.",
+            "website": "https://vikunja.io/",
+            "repoUrl": "https://code.vikunja.io/api",
+            "license": "AGPL-3.0",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX",
+              "WEB"
+            ],
+            "fitNotes": "Tags: tasks, kanban, self-hosted"
+          }
+        ]
+      },
+      {
+        "name": "Trello",
+        "description": "Popular proprietary tool: Trello",
+        "website": null,
+        "alternatives": [
+          {
+            "name": "WeKan",
+            "description": "The open-source kanban board (built with Meteor).",
+            "website": "https://wekan.github.io/",
+            "repoUrl": "https://github.com/wekan/wekan",
+            "license": "MIT",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX",
+              "WEB"
+            ],
+            "fitNotes": "Tags: kanban, tasks, collaboration"
+          },
+          {
+            "name": "Focalboard",
+            "description": "Focalboard is an open source, self-hosted alternative to Trello, Notion, and Asana.",
+            "website": "https://www.focalboard.com/",
+            "repoUrl": "https://github.com/mattermost/focalboard",
+            "license": "MIT",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX",
+              "WEB"
+            ],
+            "fitNotes": "Tags: kanban, project-management"
+          },
+          {
+            "name": "Planka",
+            "description": "The realtime kanban board for workgroups built with React and Redux.",
+            "website": "https://planka.app/",
+            "repoUrl": "https://github.com/plankanban/planka",
+            "license": "MIT",
+            "platforms": [
+              "LINUX",
+              "WEB"
+            ],
+            "fitNotes": "Tags: kanban, tasks, self-hosted"
+          }
+        ]
+      },
+      {
+        "name": "Confluence",
+        "description": "Popular proprietary tool: Confluence",
+        "website": null,
+        "alternatives": [
+          {
+            "name": "BookStack",
+            "description": "A platform to create documentation/wiki content built with PHP & Laravel.",
+            "website": "https://www.bookstackapp.com/",
+            "repoUrl": "https://github.com/BookStackApp/BookStack",
+            "license": "MIT",
+            "platforms": [
+              "LINUX",
+              "WEB"
+            ],
+            "fitNotes": "Tags: wiki, documentation, self-hosted"
+          },
+          {
+            "name": "Wiki.js",
+            "description": "The most powerful and extensible open source Wiki software.",
+            "website": "https://js.wiki/",
+            "repoUrl": "https://github.com/requarks/wiki",
+            "license": "AGPL-3.0",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX",
+              "WEB"
+            ],
+            "fitNotes": "Tags: wiki, documentation, nodejs"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Security & Privacy",
+    "slug": "security-privacy",
+    "icon": "\ud83d\udd12",
+    "description": "Tools for securing your data, devices, and online identity.",
+    "apps": [
+      {
+        "name": "LastPass",
+        "description": "Popular proprietary tool: LastPass",
+        "website": null,
+        "alternatives": [
+          {
+            "name": "Bitwarden",
+            "description": "Open source password management solutions for individuals, teams, and business organizations.",
+            "website": "https://bitwarden.com/",
+            "repoUrl": "https://github.com/bitwarden",
+            "license": "GPL-3.0",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX",
+              "ANDROID",
+              "IOS",
+              "WEB"
+            ],
+            "fitNotes": "Tags: passwords, security, sync"
+          },
+          {
+            "name": "KeePassXC",
+            "description": "KeePassXC is a cross-platform community-driven port of the Windows application 'KeePass Password Safe'.",
+            "website": "https://keepassxc.org/",
+            "repoUrl": "https://github.com/keepassxreboot/keepassxc",
+            "license": "GPL-2.0",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX"
+            ],
+            "fitNotes": "Tags: passwords, offline, security"
+          }
+        ]
+      },
+      {
+        "name": "NordVPN",
+        "description": "Popular proprietary tool: NordVPN",
+        "website": null,
+        "alternatives": [
+          {
+            "name": "WireGuard",
+            "description": "Fast, modern, secure VPN tunnel.",
+            "website": "https://www.wireguard.com/",
+            "repoUrl": "https://git.zx2c4.com/wireguard-linux",
+            "license": "GPL-2.0",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX",
+              "ANDROID",
+              "IOS"
+            ],
+            "fitNotes": "Tags: vpn, networking, protocol"
+          },
+          {
+            "name": "OpenVPN",
+            "description": "Open source robust and highly flexible VPN daemon.",
+            "website": "https://openvpn.net/",
+            "repoUrl": "https://github.com/OpenVPN/openvpn",
+            "license": "GPL-2.0",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX",
+              "ANDROID",
+              "IOS"
+            ],
+            "fitNotes": "Tags: vpn, networking"
+          },
+          {
+            "name": "ProtonVPN (Clients)",
+            "description": "ProtonVPN open source clients.",
+            "website": "https://protonvpn.com/",
+            "repoUrl": "https://github.com/ProtonVPN",
+            "license": "GPL-3.0",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX",
+              "ANDROID",
+              "IOS"
+            ],
+            "fitNotes": "Tags: vpn, privacy"
+          }
+        ]
+      },
+      {
+        "name": "Norton",
+        "description": "Popular proprietary tool: Norton",
+        "website": null,
+        "alternatives": [
+          {
+            "name": "ClamAV",
+            "description": "An open source antivirus engine for detecting trojans, viruses, malware & other malicious threats.",
+            "website": "https://www.clamav.net/",
+            "repoUrl": "https://github.com/Cisco-Talos/clamav",
+            "license": "GPL-2.0",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX"
+            ],
+            "fitNotes": "Tags: antivirus, security, malware"
+          }
+        ]
+      },
+      {
+        "name": "Authy",
+        "description": "Popular proprietary tool: Authy",
+        "website": null,
+        "alternatives": [
+          {
+            "name": "Aegis Authenticator",
+            "description": "A free, secure and open source app for Android to manage your 2-step verification tokens.",
+            "website": "https://getaegis.app/",
+            "repoUrl": "https://github.com/beemdevelopment/Aegis",
+            "license": "GPL-3.0",
+            "platforms": [
+              "ANDROID"
+            ],
+            "fitNotes": "Tags: 2fa, authenticator, totp"
+          },
+          {
+            "name": "andOTP",
+            "description": "Open source two-factor authentication for Android.",
+            "website": "https://github.com/andOTP/andOTP",
+            "repoUrl": "https://github.com/andOTP/andOTP",
+            "license": "MIT",
+            "platforms": [
+              "ANDROID"
+            ],
+            "fitNotes": "Tags: 2fa, authenticator, totp"
+          }
+        ]
+      },
+      {
+        "name": "NextDNS",
+        "description": "Popular proprietary tool: NextDNS",
+        "website": null,
+        "alternatives": [
+          {
+            "name": "Pi-hole",
+            "description": "A black hole for Internet advertisements.",
+            "website": "https://pi-hole.net/",
+            "repoUrl": "https://github.com/pi-hole/pi-hole",
+            "license": "EUPL-1.2",
+            "platforms": [
+              "LINUX"
+            ],
+            "fitNotes": "Tags: dns, adblocker, self-hosted"
+          },
+          {
+            "name": "AdGuard Home",
+            "description": "Network-wide ads & trackers blocking DNS server.",
+            "website": "https://adguard.com/en/adguard-home/overview.html",
+            "repoUrl": "https://github.com/AdguardTeam/AdGuardHome",
+            "license": "GPL-3.0",
+            "platforms": [
+              "WINDOWS",
+              "MACOS",
+              "LINUX"
+            ],
+            "fitNotes": "Tags: dns, adblocker, self-hosted"
+          }
+        ]
+      }
+    ]
+  }
+]

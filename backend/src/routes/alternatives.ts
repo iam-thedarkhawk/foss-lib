@@ -1,50 +1,99 @@
 import { Router } from "express";
 import { prisma } from "../db.js";
+import { requireAdmin } from "../middleware/auth.js";
 
 const router = Router();
 
-// GET /api/alternatives?category=slug&search=word - list catalogue alternatives
+// GET /api/alternatives?category=slug&search=word&platform=LINUX (PUBLIC)
 router.get("/", async (req, res) => {
-  const { category, search } = req.query;
-  const alternatives = await prisma.fossAlternative.findMany({
-    where: {
-      ...(search
-        ? { OR: [
-            { name: { contains: String(search), mode: "insensitive" } },
-            { description: { contains: String(search), mode: "insensitive" } },
-          ] }
-        : {}),
-      ...(category
-        ? { apps: { some: { app: { category: { slug: String(category) } } } } }
-        : {}),
-    },
-    include: {
-      apps: {
-        include: { app: { include: { category: true } } },
+  const { category, search, platform } = req.query;
+
+  try {
+    const alternatives = await prisma.fossAlternative.findMany({
+      where: {
+        ...(search
+          ? {
+              OR: [
+                { name: { contains: String(search) } },
+                { description: { contains: String(search) } },
+              ],
+            }
+          : {}),
+        ...(category
+          ? {
+              apps: {
+                some: {
+                  app: {
+                    category: { slug: String(category) },
+                  },
+                },
+              },
+            }
+          : {}),
       },
-    },
-    orderBy: { name: "asc" },
-  });
-  res.json(alternatives);
+      include: {
+        apps: {
+          include: {
+            app: {
+              include: { category: true },
+            },
+          },
+        },
+      },
+      orderBy: { name: "asc" },
+    });
+
+    const formatted = alternatives
+      .map((alt) => ({
+        ...alt,
+        platforms: alt.platforms
+          ? alt.platforms.split(",").map((p) => p.trim())
+          : [],
+      }))
+      .filter((alt) => {
+        if (!platform) return true;
+        return alt.platforms.includes(String(platform).toUpperCase());
+      });
+
+    res.json(formatted);
+  } catch (error: any) {
+    res.status(500).json({ error: error.message || "Failed to fetch alternatives" });
+  }
 });
 
-// GET /api/alternatives/:id - show an alternative and its catalogue links
+// GET /api/alternatives/:id (PUBLIC)
 router.get("/:id", async (req, res) => {
-  const alternative = await prisma.fossAlternative.findUnique({
-    where: { id: req.params.id },
-    include: {
-      apps: {
-        include: { app: { include: { category: true } } },
+  try {
+    const alternative = await prisma.fossAlternative.findUnique({
+      where: { id: req.params.id },
+      include: {
+        apps: {
+          include: {
+            app: {
+              include: { category: true },
+            },
+          },
+        },
       },
-    },
-  });
+    });
 
-  if (!alternative) return res.status(404).json({ error: "not found" });
-  res.json(alternative);
+    if (!alternative) return res.status(404).json({ error: "not found" });
+
+    const formatted = {
+      ...alternative,
+      platforms: alternative.platforms
+        ? alternative.platforms.split(",").map((p) => p.trim())
+        : [],
+    };
+
+    res.json(formatted);
+  } catch (error: any) {
+    res.status(500).json({ error: error.message || "Failed to fetch alternative" });
+  }
 });
 
-// POST /api/alternatives - create a FOSS alternative and link it to an app
-router.post("/", async (req, res) => {
+// POST /api/alternatives (ADMIN ONLY)
+router.post("/", requireAdmin, async (req, res) => {
   const {
     name,
     description,
@@ -62,22 +111,40 @@ router.post("/", async (req, res) => {
     });
   }
 
-  const alternative = await prisma.fossAlternative.create({
-    data: {
-      name,
-      description,
-      license,
-      platforms: platforms ?? [],
-      repoUrl,
-      website,
-      apps: {
-        create: { appId, fitNotes },
-      },
-    },
-    include: { apps: true },
-  });
+  try {
+    const platString = Array.isArray(platforms)
+      ? platforms.join(",")
+      : platforms || "";
 
-  res.status(201).json(alternative);
+    const alternative = await prisma.fossAlternative.create({
+      data: {
+        name,
+        description,
+        license,
+        platforms: platString,
+        repoUrl,
+        website,
+        stars: 0,
+        apps: {
+          create: { appId, fitNotes },
+        },
+      },
+      include: {
+        apps: {
+          include: { app: { include: { category: true } } },
+        },
+      },
+    });
+
+    res.status(201).json({
+      ...alternative,
+      platforms: alternative.platforms
+        ? alternative.platforms.split(",").map((p) => p.trim())
+        : [],
+    });
+  } catch (error: any) {
+    res.status(500).json({ error: error.message || "Failed to create alternative" });
+  }
 });
 
 export default router;

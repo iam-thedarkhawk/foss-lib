@@ -4,6 +4,7 @@ import Footer from "./components/Footer";
 import Catalogue from "./pages/Catalogue";
 import Submit from "./pages/Submit";
 import AlternativeDetail from "./pages/AlternativeDetail";
+import Admin from "./pages/Admin";
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
           <Route path="/" element={<Catalogue />} />
           <Route path="/submit" element={<Submit />} />
           <Route path="/alternatives/:id" element={<AlternativeDetail />} />
+          <Route path="/admin" element={<Admin />} />
         </Routes>
       </main>
       <Footer />

@@ -1,144 +1,179 @@
 # Contributing to FOSSLib
 
-Welcome to FOSSLib! We're excited that you want to contribute. This guide will help you get started.
+Thank you for your interest in contributing to **FOSSLib**! 
 
-## Types of Contributions
+FOSSLib is a community-driven, curated library catalogue helping individuals, developers, and organizations replace proprietary software with transparent, self-hostable, and ethical open-source tools.
 
-You can contribute to FOSSLib in several ways:
-- **Adding Alternatives:** Know a great FOSS alternative? Add it to our database.
-- **Fixing Data:** Spot an error in an app's description or license? Submit a fix.
-- **Improving UI/Code:** Enhance the website's design, fix bugs, or optimize the build script.
-- **Reporting Bugs:** Found a broken link or an issue with the site? Open an issue.
+Whether you are adding a new software alternative, refining feature comparisons, fixing bugs, or improving the vintage library catalogue UI, your contributions are welcome.
 
-## Step-by-Step: Adding or Editing an Alternative
+---
 
-1. **Fork the Repository:** Create a fork of this repository on GitLab/GitHub.
-2. **Clone Locally:** `git clone https://gitlab.com/YOUR-USERNAME/fosslib.git`
-3. **Edit YAML Files:** Find the appropriate category file in the `data/` directory.
-4. **Commit Changes:** Write clear, concise commit messages.
-5. **Create a Merge Request (MR):** Submit your changes for review.
+## Table of Contents
 
-## YAML Schema Reference
+- [Ways to Contribute](#ways-to-contribute)
+  - [1. Propose Alternatives via the Web Form (No Code)](#1-propose-alternatives-via-the-web-form-no-code)
+  - [2. Add or Edit Catalogue Data via Code](#2-add-or-edit-catalogue-data-via-code)
+  - [3. Improve Code, UI, or Backend Features](#3-improve-code-ui-or-backend-features)
+- [Local Development Setup](#local-development-setup)
+- [Catalogue Data Standards](#catalogue-data-standards)
+  - [Alternative Criteria](#alternative-criteria)
+  - [Supported Platforms & Licenses](#supported-platforms--licenses)
+  - [Writing High-Quality Fit Notes](#writing-high-quality-fit-notes)
+- [Design System & UI Guidelines](#design-system--ui-guidelines)
+- [Submission & Review Process](#submission--review-process)
+- [Pull Request Checklist](#pull-request-checklist)
 
-When adding an entry, ensure it matches this structure:
+---
 
-```yaml
-- id: app-unique-id
-  name: App Name
-  description: A short description of the app.
-  url: https://example.com
-  license: MIT / GPLv3 / etc.
-  repository: https://gitlab.com/example/repo
-  platforms:
-    - Windows
-    - Linux
-    - macOS
-  tags:
-    - tag1
-    - tag2
-  alternatives_to:
-    # Contributing to FOSSLib
+## Ways to Contribute
 
-    FOSSLib is a React/Vite frontend backed by an Express API, Prisma, and PostgreSQL.
-    Contributions are welcome for catalogue data, UI, backend behavior, documentation, and
-    bug fixes.
+### 1. Propose Alternatives via the Web Form (No Code)
+If you don't want to touch git or code:
+1. Start the app or visit the hosted site.
+2. Navigate to **/submit** (`http://localhost:5173/submit`).
+3. Fill in the proprietary app name, FOSS alternative, repository URL, category, and notes.
+4. Submit! Your entry is placed in the curator review ledger (`/admin`) for approval.
 
-    ## Ways to Contribute
+### 2. Add or Edit Catalogue Data via Code
+Direct data contributions live in:
+📁 **`backend/prisma/seedData.json`**
 
-    - Add or correct an open source alternative.
-    - Improve the catalogue, submission form, or responsive layout.
-    - Improve API routes, database behavior, validation, or error handling.
-    - Report broken links, inaccurate data, or reproducible bugs.
-    - Improve documentation and setup instructions.
+To add or update an alternative:
+1. Locate the appropriate category in `backend/prisma/seedData.json`.
+2. Add or modify the proprietary application and its FOSS alternatives.
+3. Validate and reload the database locally:
+   ```bash
+   npm run seed
+   ```
+4. Verify your change in the browser at `http://localhost:5173`.
+5. Open a Pull Request!
 
-    ## Adding Catalogue Data
+### 3. Improve Code, UI, or Backend Features
+We welcome improvements to:
+- **Frontend**: React 18, TypeScript, Tailwind CSS, and client-side filtering.
+- **Backend**: Express API routes, curation workflows, and Prisma ORM models.
+- **Search & Discovery**: Enhancing indexing, tags, or fuzzy filtering.
 
-    For permanent catalogue entries, edit the seed data in
-    `backend/prisma/seed.ts`. Add an alternative to the relevant proprietary app's
-    `alternatives` array:
+---
 
-    ```ts
-    {
-      name: "Example App",
-      description: "A short description of the open source alternative.",
-      license: "MIT",
-      platforms: ["WINDOWS", "MACOS", "LINUX"],
-      repoUrl: "https://github.com/example/app",
-      website: "https://example.com",
-      fitNotes: "Explain how closely it matches the proprietary app.",
-    },
-    ```
+## Local Development Setup
 
-    Use the license and platform values defined in `backend/prisma/schema.prisma`.
-    After editing the seed data, run:
+### Prerequisites
+- **Node.js**: v18.0.0 or higher
+- **npm**: v9.0.0 or higher
 
-    ```bash
-    cd backend
-    npm run prisma:seed
-    ```
+### 1. Clone & Install
+```bash
+# Clone the repository
+git clone https://github.com/iam-thedarkhawk/foss-lib.git
+cd foss-lib
 
-    The seed script is safe to run repeatedly: it upserts categories, apps,
-    alternatives, and app-to-alternative links.
+# Install all workspace dependencies (root, backend, frontend)
+npm run install:all
+```
 
-    The website's **Submit an alternative** form is intended for suggestions. It
-    creates a `PENDING` submission for review and does not publish catalogue data
-    automatically.
+### 2. Database Initialization
+FOSSLib uses **SQLite** by default for zero-config local development:
+```bash
+# Sync database schema and populate 85+ starter catalogue entries
+npm run db:push
+npm run seed
+```
 
-    ## Local Development
+*(Optional)* To view and edit the database records through Prisma's visual GUI:
+```bash
+npm run studio
+```
 
-    Set up the project using [SETUP.md](SETUP.md). You need a PostgreSQL database and
-    `backend/.env` containing a valid `DATABASE_URL`.
+### 3. Start Development Servers
+Run both backend API (:4000) and frontend Vite server (:5173) concurrently:
+```bash
+npm run dev
+```
 
-    Run the services in separate terminals:
+- **Public Catalogue Browser**: [http://localhost:5173](http://localhost:5173)
+- **Submit Form**: [http://localhost:5173/submit](http://localhost:5173/submit)
+- **Curator Review Desk**: [http://localhost:5173/admin](http://localhost:5173/admin) (Default Passkey: `fosslib-curator-secret`)
+- **Backend API**: [http://localhost:4000](http://localhost:4000)
 
-    ```bash
-    cd backend
-    npm run dev
-    ```
+---
 
-    ```bash
-    cd frontend
-    npm run dev
-    ```
+## Catalogue Data Standards
 
-    The frontend runs at `http://localhost:5173` and the API runs at
-    `http://localhost:4000`.
+When adding software entries to `backend/prisma/seedData.json` or submitting via `/submit`, please ensure the entry meets our catalogue standards:
 
-    ## Guidelines
+### Alternative Criteria
+- **Must be genuinely Free and Open Source**: The software source code must be public and licensed under an OSI-approved or FSF-free software license (e.g. MIT, GPL, Apache, BSD, MPL, AGPL). "Free as in beer" freeware with closed source is not accepted.
+- **Active & Usable**: The project should have active maintenance or be in a stable, functioning state.
+- **True Functional Alternative**: The alternative must realistically fulfill the primary use cases of the commercial application it replaces.
 
-    - Only add projects with recognized open source licenses.
-    - Verify repository, website, license, and platform information.
-    - Keep descriptions concise and factual.
-    - Explain important compatibility gaps in `fitNotes`.
-    - Keep one alternative linked to each relevant proprietary app.
-    - Avoid duplicate alternatives and preserve the existing data model.
-    - Do not commit `.env` files or database credentials.
+### Supported Platforms & Licenses
+Standard platform identifiers:
+- `LINUX`
+- `MACOS`
+- `WINDOWS`
+- `WEB`
+- `ANDROID`
+- `IOS`
+- `SELF_HOSTED`
 
-    ## Validation
+Common standardized licenses:
+- `MIT`
+- `GPL-2.0` / `GPL-3.0` / `GPL-3.0-or-later`
+- `Apache-2.0`
+- `MPL-2.0`
+- `AGPL-3.0` / `AGPL-3.0-only`
+- `BSD-3-Clause`
 
-    Before opening a pull request, run the checks for the area you changed:
+### Writing High-Quality Fit Notes
+Fit notes give visitors practical context before migrating. Highlight:
+- **Direct 1:1 Parity**: e.g., *"Reads/writes native .docx/.xlsx formats directly; strong drop-in replacement."*
+- **Trade-offs & Missing Features**: e.g., *"Steeper learning curve; lacks cloud collaboration without self-hosting."*
+- **Unique Advantages**: e.g., *"End-to-end encrypted, lightweight, local-first storage."*
 
-    ```bash
-    cd frontend
-    npm run build
-    ```
+---
 
-    ```bash
-    cd backend
-    npx prisma generate
-    npm run build
-    ```
+## Design System & UI Guidelines
 
-    If you changed database schema or seed data, also run the migration or seed
-    command against a development database and verify the relevant API response.
+FOSSLib intentionally avoids generic modern tech themes in favor of an editorial, tactile **library catalogue index-card** aesthetic:
 
-    ## Pull Requests and Bug Reports
+- **Color Palette**:
+  - `paper`: `#F1ECDD` (warm library parchment)
+  - `card`: `#FBF7EC` (cardstock)
+  - `ink`: `#1F2A22` (deep dark green-black ink)
+  - `pine`: `#28422F` (mid-tone accent)
+  - `rust`: `#A34A28` (terracotta highlight)
+  - `amber`: `#C08A2E` (warm amber indicator)
+- **Typography**:
+  - **Fraunces** (`font-display`): Editorial serif headings.
+  - **Inter** (`font-body`): Clean, legible body text.
+  - **IBM Plex Mono** (`font-mono`): Classification labels, stamps, badges, and metadata.
+- **Components & Classes**:
+  - Use `.catalogue-card` for card containers (crisp border + hard offset shadow `shadow-card: 2px 2px 0 0 #1F2A22`). Avoid soft modern blurs or rounded corners (`rounded-none`).
+  - Use `.tag-pill` for license and platform pills.
+  - Use `.stamp-button` for action links with physical hover tilt (`hover:-rotate-1`).
 
-    1. Fork or clone the repository and create a focused branch.
-    2. Make the smallest change that solves the problem.
-    3. Run the relevant validation commands above.
-    4. Describe what changed and how it was tested.
-    5. Open a merge request or pull request with a clear title.
+---
 
-    For bugs, include reproduction steps, expected behavior, actual behavior, and
-    relevant logs without including secrets.
+## Submission & Review Process
+
+1. **Moderation Queue**:
+   - Community submissions submitted through `/submit` land in the review desk with status `PENDING`.
+2. **Reviewing Entries**:
+   - Curators review pending proposals at `/admin`.
+   - Access is protected by the `ADMIN_TOKEN` passkey configured in `backend/.env`.
+   - Approving an entry automatically promotes it into the live catalogue database under its matched category.
+
+---
+
+## Pull Request Checklist
+
+Before submitting a Pull Request, please ensure:
+
+- [ ] Dependencies install cleanly: `npm run install:all`
+- [ ] Both frontend and backend compile without errors: `npm run build`
+- [ ] If modifying data: `npm run seed` succeeds and changes render properly in the browser
+- [ ] If changing UI: tactile catalogue styling tokens (fonts, borders, offset shadows) are respected
+- [ ] Commit messages are descriptive (e.g. `feat(data): add Penpot alternative for Figma` or `fix(api): handle missing category slug`)
+
+Thank you for helping preserve and champion open-source software!

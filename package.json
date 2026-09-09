@@ -1,0 +1,28 @@
+{
+  "name": "fosslib",
+  "version": "1.0.0",
+  "description": "FOSSLib — A curated catalogue of open source alternatives to proprietary and paid software",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "install:all": "npm install --prefix backend && npm install --prefix frontend",
+    "dev:backend": "npm run dev --prefix backend",
+    "dev:frontend": "npm run dev --prefix frontend",
+    "dev": "node dev.mjs",
+    "build": "npm run build --prefix frontend && npm run build --prefix backend",
+    "start": "node backend/dist/index.js",
+    "db:postgres": "npm run db:postgres --prefix backend",
+    "db:sqlite": "npm run db:sqlite --prefix backend",
+    "db:push": "npm run prisma:push --prefix backend",
+    "seed": "npm run prisma:seed --prefix backend",
+    "studio": "npm run prisma:studio --prefix backend"
+  },
+  "keywords": [
+    "foss",
+    "open-source",
+    "catalogue",
+    "alternatives",
+    "privacy"
+  ],
+  "license": "MIT"
+}

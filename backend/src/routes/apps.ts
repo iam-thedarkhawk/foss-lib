@@ -1,59 +1,109 @@
 import { Router } from "express";
 import { prisma } from "../db.js";
+import { requireAdmin } from "../middleware/auth.js";
 
 const router = Router();
 
-// GET /api/apps?category=slug&search=word
-// Returns proprietary apps with their linked FOSS alternatives.
+// GET /api/apps?category=slug&search=word&platform=LINUX (PUBLIC)
 router.get("/", async (req, res) => {
-  const { category, search } = req.query;
+  const { category, search, platform } = req.query;
 
-  const apps = await prisma.proprietaryApp.findMany({
-    where: {
-      ...(category
-        ? { category: { slug: String(category) } }
-        : {}),
-      ...(search
-        ? { name: { contains: String(search), mode: "insensitive" } }
-        : {}),
-    },
-    include: {
-      category: true,
-      alternatives: {
-        include: { alternative: true },
+  try {
+    const apps = await prisma.proprietaryApp.findMany({
+      where: {
+        ...(category
+          ? { category: { slug: String(category) } }
+          : {}),
+        ...(search
+          ? {
+              OR: [
+                { name: { contains: String(search) } },
+                { description: { contains: String(search) } },
+              ],
+            }
+          : {}),
       },
-    },
-    orderBy: { name: "asc" },
-  });
+      include: {
+        category: true,
+        alternatives: {
+          include: { alternative: true },
+        },
+      },
+      orderBy: { name: "asc" },
+    });
 
-  res.json(apps);
+    const formatted = apps.map((app) => ({
+      ...app,
+      alternatives: app.alternatives
+        .map((link) => ({
+          ...link,
+          alternative: {
+            ...link.alternative,
+            platforms: link.alternative.platforms
+              ? link.alternative.platforms.split(",").map((p) => p.trim())
+              : [],
+          },
+        }))
+        .filter((link) => {
+          if (!platform) return true;
+          return link.alternative.platforms.includes(String(platform).toUpperCase());
+        }),
+    }));
+
+    res.json(formatted);
+  } catch (error: any) {
+    res.status(500).json({ error: error.message || "Failed to fetch apps" });
+  }
 });
 
-// GET /api/apps/:id
+// GET /api/apps/:id (PUBLIC)
 router.get("/:id", async (req, res) => {
-  const app = await prisma.proprietaryApp.findUnique({
-    where: { id: req.params.id },
-    include: {
-      category: true,
-      alternatives: { include: { alternative: true } },
-    },
-  });
-  if (!app) return res.status(404).json({ error: "not found" });
-  res.json(app);
+  try {
+    const app = await prisma.proprietaryApp.findUnique({
+      where: { id: req.params.id },
+      include: {
+        category: true,
+        alternatives: { include: { alternative: true } },
+      },
+    });
+    if (!app) return res.status(404).json({ error: "not found" });
+
+    const formatted = {
+      ...app,
+      alternatives: app.alternatives.map((link) => ({
+        ...link,
+        alternative: {
+          ...link.alternative,
+          platforms: link.alternative.platforms
+            ? link.alternative.platforms.split(",").map((p) => p.trim())
+            : [],
+        },
+      })),
+    };
+
+    res.json(formatted);
+  } catch (error: any) {
+    res.status(500).json({ error: error.message || "Failed to fetch app" });
+  }
 });
 
-// POST /api/apps - create a proprietary app entry
-router.post("/", async (req, res) => {
+// POST /api/apps - create a proprietary app entry (ADMIN ONLY)
+router.post("/", requireAdmin, async (req, res) => {
   const { name, description, website, categoryId } = req.body ?? {};
   if (!name || !description || !categoryId) {
     return res
       .status(400)
       .json({ error: "name, description and categoryId are required" });
   }
-  const app = await prisma.proprietaryApp.create({
-    data: { name, description, website, categoryId },
-  });
-  res.status(201).json(app);
+  try {
+    const app = await prisma.proprietaryApp.create({
+      data: { name, description, website, categoryId },
+      include: { category: true },
+    });
+    res.status(201).json(app);
+  } catch (error: any) {
+    res.status(500).json({ error: error.message || "Failed to create app" });
+  }
 });
 
 export default router;

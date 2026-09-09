@@ -19,6 +19,8 @@ export default {
       },
       boxShadow: {
         card: "2px 2px 0 0 #1F2A22",
+        "card-hover": "3px 3px 0 0 #1F2A22",
+        "card-deep": "4px 4px 0 0 #1F2A22",
       },
     },
   },
