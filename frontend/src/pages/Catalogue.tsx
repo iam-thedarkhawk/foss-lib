@@ -70,6 +70,17 @@ export default function Catalogue() {
   );
 
   return (
+      {/* Intro Banner */}
+      <div className="mb-8 p-6 bg-card border-2 border-ink shadow-card">
+        <div>
+          <h2 className="font-display text-2xl font-bold text-ink">
+            Free & Open Source Alternatives Library
+          </h2>
+          <p className="text-sm text-ink/80 mt-1 max-w-2xl">
+            A curated reference index to help individuals and organizations replace closed, proprietary software with ethical, transparent, and self-hostable tools.
+          </p>
+        </div>
+      </div>
       <FilterBar
         categories={categories}
         activeCategory={activeCategory}
