@@ -83,3 +83,17 @@ export interface Submission {
   status: "PENDING" | "APPROVED" | "REJECTED" | string;
   createdAt: string;
 }
+
+export interface ChatMessage {
+  id: string;
+  role: "user" | "assistant";
+  content: string;
+  timestamp: string;
+  recommendedAlternatives?: AlternativeListItem[];
+}
+
+export interface ChatAssistantResponse {
+  message: string;
+  recommendedAlternatives: AlternativeListItem[];
+  apiKeyMissing?: boolean;
+}

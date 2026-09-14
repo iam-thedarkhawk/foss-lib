@@ -6,17 +6,18 @@
   "main": "dist/index.js",
   "scripts": {
     "dev": "tsx watch src/index.ts",
-    "build": "prisma generate && tsc",
+    "build": "node prisma/auto-provider.mjs && prisma generate && tsc",
     "start": "node dist/index.js",
     "db:sqlite": "node prisma/switch-db.mjs sqlite",
     "db:postgres": "node prisma/switch-db.mjs postgresql",
-    "prisma:generate": "prisma generate",
+    "prisma:generate": "node prisma/auto-provider.mjs && prisma generate",
     "prisma:migrate": "prisma migrate dev",
-    "prisma:push": "prisma db push",
-    "prisma:seed": "tsx prisma/seed.ts",
+    "prisma:push": "node prisma/auto-provider.mjs && prisma db push",
+    "prisma:seed": "node prisma/auto-provider.mjs && tsx prisma/seed.ts",
     "prisma:studio": "prisma studio"
   },
   "dependencies": {
+    "@google/genai": "^2.22.0",
     "@prisma/client": "^5.22.0",
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",

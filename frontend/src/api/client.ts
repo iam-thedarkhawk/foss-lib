@@ -2,6 +2,7 @@ import type {
   AlternativeDetail,
   AlternativeListItem,
   Category,
+  ChatAssistantResponse,
   ProprietaryApp,
   Submission,
 } from "../types";
@@ -123,5 +124,15 @@ export const api = {
   deleteSubmission: (id: string) =>
     request<{ ok: boolean; message: string }>(`/submissions/${id}`, {
       method: "DELETE",
+    }),
+
+  chatWithAssistant: (
+    messages: Array<{ role: "user" | "assistant"; content: string }>,
+    signal?: AbortSignal
+  ) =>
+    request<ChatAssistantResponse>("/assistant/chat", {
+      method: "POST",
+      body: JSON.stringify({ messages }),
+      signal,
     }),
 };

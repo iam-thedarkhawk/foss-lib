@@ -5,6 +5,7 @@ import Catalogue from "./pages/Catalogue";
 import Submit from "./pages/Submit";
 import AlternativeDetail from "./pages/AlternativeDetail";
 import Admin from "./pages/Admin";
+import AssistantDrawer from "./components/AssistantDrawer";
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
           <Route path="/admin" element={<Admin />} />
         </Routes>
       </main>
+      <AssistantDrawer />
       <Footer />
     </div>
   );

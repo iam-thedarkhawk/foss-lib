@@ -8,6 +8,7 @@ import categoriesRouter from "./routes/categories.js";
 import appsRouter from "./routes/apps.js";
 import alternativesRouter from "./routes/alternatives.js";
 import submissionsRouter from "./routes/submissions.js";
+import assistantRouter from "./routes/assistant.js";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const app = express();
@@ -21,6 +22,7 @@ app.use("/api/categories", categoriesRouter);
 app.use("/api/apps", appsRouter);
 app.use("/api/alternatives", alternativesRouter);
 app.use("/api/submissions", submissionsRouter);
+app.use("/api/assistant", assistantRouter);
 // Serve frontend build if present (for single-service hosting on Render, Railway, Fly.io)
 const frontendDist = path.resolve(__dirname, "../../frontend/dist");
 if (fs.existsSync(frontendDist)) {
