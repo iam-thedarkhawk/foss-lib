@@ -122,26 +122,29 @@ RECOMMENDED_IDS: id1, id2
       parts: [{ text: m.content }],
     }));
 
-    let response;
-    try {
-      response = await ai.models.generateContent({
-        model: "gemini-3.6-flash",
-        contents,
-        config: {
-          systemInstruction,
-          temperature: 0.7,
-        },
-      });
-    } catch (primaryErr) {
-      console.warn("Primary model gemini-3.6-flash error, trying fallback:", primaryErr);
-      response = await ai.models.generateContent({
-        model: "gemini-3.7-flash",
-        contents,
-        config: {
-          systemInstruction,
-          temperature: 0.7,
-        },
-      });
+    const candidateModels = ["gemini-2.5-flash", "gemini-3.5-flash-lite", "gemini-3.7-flash"];
+    let response: any = null;
+    let lastError: any = null;
+
+    for (const model of candidateModels) {
+      try {
+        response = await ai.models.generateContent({
+          model,
+          contents,
+          config: {
+            systemInstruction,
+            temperature: 0.7,
+          },
+        });
+        if (response && response.text) break;
+      } catch (err: any) {
+        lastError = err;
+        console.warn(`Model ${model} failed, trying next candidate...`, err?.message?.slice(0, 100));
+      }
+    }
+
+    if (!response || !response.text) {
+      throw lastError || new Error("All candidate Gemini models were unavailable.");
     }
 
     const rawReply = response.text || "I was unable to pull a catalogue record at this time.";
@@ -155,7 +158,7 @@ RECOMMENDED_IDS: id1, id2
       cleanReply = rawReply.replace(/RECOMMENDED_IDS:\s*([^\n\r]+)/i, "").trim();
       const rawIds = recommendedIdsMatch[1]
         .split(",")
-        .map((s) => s.trim().replace(/^\[|\]$/g, ""))
+        .map((s: string) => s.trim().replace(/^\[|\]$/g, ""))
         .filter(Boolean);
 
       const seen = new Set<string>();
@@ -174,8 +177,18 @@ RECOMMENDED_IDS: id1, id2
     });
   } catch (error: any) {
     console.error("Error generating assistant response:", error);
+
+    let userMessage = "The Reference Librarian is currently unable to consult the archives. Please try again in a moment.";
+    const errMsg = String(error?.message || "");
+
+    if (errMsg.includes("503") || errMsg.includes("UNAVAILABLE") || errMsg.includes("high demand")) {
+      userMessage = "The Reference Desk is experiencing high demand with Google Gemini right now. Please try again in a moment!";
+    } else if (errMsg.includes("API_KEY_SERVICE_BLOCKED") || errMsg.includes("401") || errMsg.includes("UNAUTHENTICATED")) {
+      userMessage = "The configured Gemini API key is invalid or has been blocked by Google Security. Please generate a fresh API key from Google AI Studio (https://aistudio.google.com/app/apikey) and update GEMINI_API_KEY in your settings.";
+    }
+
     res.status(500).json({
-      error: error.message || "Failed to consult the Reference Librarian. Please try again.",
+      error: userMessage,
     });
   }
 });
