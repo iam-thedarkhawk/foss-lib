@@ -24,15 +24,24 @@ app.use("/api/alternatives", alternativesRouter);
 app.use("/api/submissions", submissionsRouter);
 app.use("/api/assistant", assistantRouter);
 // Serve frontend build if present (for single-service hosting on Render, Railway, Fly.io)
-const frontendDist = path.resolve(__dirname, "../../frontend/dist");
-if (fs.existsSync(frontendDist)) {
+const possibleDistPaths = [
+    path.resolve(__dirname, "../../frontend/dist"),
+    path.resolve(process.cwd(), "frontend/dist"),
+    path.resolve(process.cwd(), "../frontend/dist"),
+];
+const frontendDist = possibleDistPaths.find((p) => fs.existsSync(p));
+if (frontendDist) {
+    console.log(`Serving frontend static files from: ${frontendDist}`);
     app.use(express.static(frontendDist));
     app.get("*", (req, res, next) => {
-        if (req.path.startsWith("/api") || req.path === "/health") {
+        if (req.path.startsWith("/api") || req.path === "/health" || req.path.startsWith("/assets/")) {
             return next();
         }
         res.sendFile(path.join(frontendDist, "index.html"));
     });
+}
+else {
+    console.warn("Frontend build directory not found. Serving API only.");
 }
 app.listen(port, () => {
     console.log(`FOSSLib backend running on http://localhost:${port}`);
