@@ -9,7 +9,7 @@
     "dev:backend": "npm run dev --prefix backend",
     "dev:frontend": "npm run dev --prefix frontend",
     "dev": "node dev.mjs",
-    "build": "npm run build --prefix frontend && npm run build --prefix backend",
+    "build": "npm run install:all && npm run build --prefix frontend && npm run build --prefix backend",
     "start": "node backend/dist/index.js",
     "db:postgres": "npm run db:postgres --prefix backend",
     "db:sqlite": "npm run db:sqlite --prefix backend",

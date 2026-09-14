@@ -10,8 +10,7 @@ backend/.env
 backend/.env.*
 
 # Build outputs
-dist/
-*/dist/
+backend/dist/
 build/
 */build/
 
